@@ -1,5 +1,33 @@
 body {
-  margin: 0;
-  padding: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
+/* Navbar */
+nav {
+  background-image: url('./images/ev.jpg');
+  background-size: 100% 100%;
+}
+
+.navbar {
+  margin-bottom: 1rem;
+}
+
+.navbar a {
+  font-weight: 300;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar a:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.navbar-brand.mb-0.h1 {
+  font-weight: 700;
+  color: white;
+}
+
+ul.nav.navbar-nav li {
+  margin: 0 0.5rem;
+}
