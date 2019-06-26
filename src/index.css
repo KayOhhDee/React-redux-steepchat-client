@@ -31,3 +31,65 @@ nav {
 ul.nav.navbar-nav li {
   margin: 0 0.5rem;
 }
+
+/* Hero */
+.hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('./images/background.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.hero-content-area {
+  color: white;
+  padding: 1rem;
+}
+
+.hero-content-area h1 {
+  font-weight: 700;
+  font-size: 4rem;
+  color: white;
+  text-shadow: 0 0 8px #66757f;
+}
+
+.hero-content-area h3 {
+  font-size: 1.75rem;
+  font-weight: 300;
+  padding: 0 0 30px;
+}
+
+.hero-content-area h3 span {
+  font-weight: 500;
+  text-shadow: 0 0 8px #66757f;
+}
+
+.hero-content-area .btn {
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+  background-color: #4E72E6;
+  padding: 0.7rem 2.4rem !important;
+  text-decoration: none;
+  letter-spacing: .075rem;
+  color: #fff;
+  border: 2px solid transparent;
+  border-radius: 0 !important;
+  outline: none !important;
+  font-size: 1.1rem;
+}
+
+.hero-content-area .btn:hover {
+  background: transparent;
+  border: 2px solid white;
+}
+
