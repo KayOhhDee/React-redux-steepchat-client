@@ -10,12 +10,21 @@ class AuthForm extends Component{
       profileImage: ''
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const authType = this.props.signup ? 'signup' : 'signin';
+    this.props.onAuth(authType, this.state).then(_ => {
+  
+    }) 
   }
 
   render() {
@@ -80,7 +89,7 @@ class AuthForm extends Component{
               </div>
             )}
             <button type="submit" className="btn btn-primary">
-              Submit
+              { buttonText }
             </button>
           </form>
         </div>
