@@ -30,6 +30,7 @@ const Main = props => {
               <AuthForm
                 buttonText="Sign me up!"
                 heading="Join SteepChat Now!"
+                signup
                 {...props}
               />
             );

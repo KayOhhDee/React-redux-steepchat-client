@@ -19,43 +19,73 @@ class AuthForm extends Component{
   }
 
   render() {
-    const { email, username, password, profileImageUrl } = this.state
-    const { heading, buttonText } = this.props;
-    return(
-      <div className="row justify-content-md-center text-center">
+    const { email, username, password, profileImage } = this.state
+    const { heading, buttonText, signup } = this.props;
+    return (
+      <div className="row justify-content-md-center">
         <div className="col-md-6">
           <form onSubmit={this.handleSubmit}>
-            <h2>{heading}</h2>
+            <h2 className="text-center">{heading}</h2>
             <div className="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input 
-                type="email" 
-                className="form-control" 
-                id="exampleInputEmail1" 
-                aria-describedby="emailHelp" 
+              <label for="exampleInputEmail1">Email address:</label>
+              <input
+                type="email"
+                className="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
                 placeholder="Enter email"
                 onChange={this.handleChange}
-                value={email} 
+                value={email}
                 name="email"
               />
             </div>
             <div className="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input 
-                type="password" 
-                class="form-control" 
-                id="exampleInputPassword1" 
+              <label for="exampleInputPassword1">Password:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
                 placeholder="Password"
                 onChange={this.handleChange}
                 value={password}
-                name="password" 
+                name="password"
               />
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            {signup && (
+              <div>
+                <div className="form-group">
+                  <label for="exampleInputUsername1">Username:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputUsername1"
+                    placeholder="Enter Username"
+                    onChange={this.handleChange}
+                    value={username}
+                    name="username"
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="exampleInputPassword1">Profile Image:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleProfileImage1"
+                    placeholder="Enter Image URL"
+                    onChange={this.handleChange}
+                    value={profileImage}
+                    name="profileImage"
+                  />
+                </div>
+              </div>
+            )}
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
           </form>
         </div>
       </div>
-    )
+    );
   }
 }
 
