@@ -17,6 +17,9 @@ const Homepage = ({ currentUser }) => {
       </div>
     );
   }
+  return(
+    <h1>You,ve logged in successfully</h1>
+  )
 }
 
 export default Homepage;
