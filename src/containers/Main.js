@@ -7,11 +7,11 @@ import { authUser } from '../store/actions/auth';
 import { removeError } from '../store/actions/error';
 
 const Main = props => {
-  const {authUser, error, removeError} = props
+  const {authUser, error, removeError, currentUser} = props
   return (
     <div className="container">
       <Switch>
-        <Route exact path="/" render={props => <Homepage {...props} />} />
+        <Route exact path="/" render={props => <Homepage currentUser={currentUser} {...props} />} />
         <Route
           exact
           path="/signin"
