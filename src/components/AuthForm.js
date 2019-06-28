@@ -29,14 +29,20 @@ class AuthForm extends Component{
 
   render() {
     const { email, username, password, profileImage } = this.state
-    const { heading, buttonText, signup } = this.props;
+    const { heading, buttonText, signup, err, removeError, history } = this.props;
+
+    history.listen(_ => {
+      removeError();
+    })
+
     return (
       <div className="row justify-content-md-center">
         <div className="col-md-6">
           <form onSubmit={this.handleSubmit}>
             <h2 className="text-center">{heading}</h2>
+            {err.message && (<div className="alert alert-danger">{err.message}</div>)}
             <div className="form-group">
-              <label for="exampleInputEmail1">Email address:</label>
+              <label htmlFor="exampleInputEmail1">Email address:</label>
               <input
                 type="email"
                 className="form-control"
@@ -49,10 +55,10 @@ class AuthForm extends Component{
               />
             </div>
             <div className="form-group">
-              <label for="exampleInputPassword1">Password:</label>
+              <label htmlFor="exampleInputPassword1">Password:</label>
               <input
                 type="password"
-                class="form-control"
+                className="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"
                 onChange={this.handleChange}
@@ -63,10 +69,10 @@ class AuthForm extends Component{
             {signup && (
               <div>
                 <div className="form-group">
-                  <label for="exampleInputUsername1">Username:</label>
+                  <label htmlFor="exampleInputUsername1">Username:</label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="exampleInputUsername1"
                     placeholder="Enter Username"
                     onChange={this.handleChange}
@@ -75,10 +81,12 @@ class AuthForm extends Component{
                   />
                 </div>
                 <div className="form-group">
-                  <label for="exampleInputPassword1">Profile Image:</label>
+                  <label htmlFor="exampleInputPassword1">
+                    Profile Image:
+                  </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="exampleProfileImage1"
                     placeholder="Enter Image URL"
                     onChange={this.handleChange}
@@ -89,7 +97,7 @@ class AuthForm extends Component{
               </div>
             )}
             <button type="submit" className="btn btn-primary">
-              { buttonText }
+              {buttonText}
             </button>
           </form>
         </div>
