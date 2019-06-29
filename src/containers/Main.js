@@ -6,6 +6,7 @@ import AuthForm from '../components/AuthForm';
 import { authUser } from '../store/actions/auth';
 import { removeError } from '../store/actions/error';
 import withAuth from '../hocs/withAuth';
+import MessageForm from '../containers/MessageForm';
 
 const Main = props => {
   const {authUser, error, removeError, currentUser} = props
