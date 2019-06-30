@@ -21,20 +21,27 @@ class MessageForm extends Component {
     return (
       <form onSubmit={this.handleNewMessage}>
         {this.props.errors.message && (
-          <div className="alert alert-danger">{this.props.errors.message}</div>
+          <div className="alert alert-danger">
+            {this.props.errors.message}
+          </div>
         )}
-        <input
-          type="text"
-          className="form-control"
-          id="exampleMessage1"
-          placeholder="Enter message"
-          onChange={e => this.setState({ message:e.target.value })}
-          value={this.state.message}
-          name="profileImage"
-        />
-        <button type="submit" className="btn btn-success pull-right">
-         Add message
-        </button>
+        <div className="row justify-content-md-center">
+          <div className="background-form"/>
+          <div className="col-md-6">
+            <textarea
+              className="form-control"
+              id="exampleMessage1"
+              placeholder="Enter message"
+              onChange={e => this.setState({ message: e.target.value })}
+              value={this.state.message}
+              name="message"
+              rows="6"
+            />
+            <button type="submit" className="btn btn-success">
+              Add message
+            </button>
+          </div>
+        </div>
       </form>
     );
   }

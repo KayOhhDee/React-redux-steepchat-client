@@ -39,11 +39,14 @@ class AuthForm extends Component{
     })
 
     return (
-      <div className="row justify-content-md-center">
+      <div className="row justify-content-md-center authColor">
+        <div className="background-form" />
         <div className="col-md-6">
           <form onSubmit={this.handleSubmit}>
             <h2 className="text-center">{heading}</h2>
-            {err.message && (<div className="alert alert-danger">{err.message}</div>)}
+            {err.message && (
+              <div className="alert alert-danger">{err.message}</div>
+            )}
             <div className="form-group">
               <label htmlFor="exampleInputEmail1">Email address:</label>
               <input
