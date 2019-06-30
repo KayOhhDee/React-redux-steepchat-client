@@ -3,10 +3,10 @@ import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import DefaultUserImg from '../images/user.png';
 
-const MessageItem = ({ date, profileImage, text, username, removeMessage }) => {
+const MessageItem = ({ date, profileImage, text, username, removeMessage, isCorrectUser }) => {
   return (
     <div>
-      <li className='list-group-item'>
+      <li className="list-group-item">
         <img
           src={profileImage || DefaultUserImg}
           alt={username}
@@ -22,9 +22,11 @@ const MessageItem = ({ date, profileImage, text, username, removeMessage }) => {
             </Moment>
           </span>
           <p>{text}</p>
-          <a className="btn btn-danger" onClick={removeMessage}>
-            Delete
-          </a>
+          {isCorrectUser && (
+            <a className="btn btn-danger" onClick={removeMessage}>
+              Delete
+            </a>
+          )}
         </div>
       </li>
     </div>
