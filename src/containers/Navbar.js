@@ -70,30 +70,19 @@ class NavBar extends Component {
           <Container className="secondNav">
             <Row>
               <Col>
-                <Link
-                  to={`/users/${
-                    this.props.currentUser.user.id
-                  }/messages/new`}
-                >
+                <Link to={`/users/${this.props.currentUser.user.id}/messages/new`}>
                   <FontAwesomeIcon icon={faPlus} />
                 </Link>
               </Col>
               <Col>
-                <Link
-                  to={`/users/${
-                    this.props.currentUser.user.id
-                  }/messages/new`}
-                >
+                <Link to="/">
                   <FontAwesomeIcon icon={faHome} />
                 </Link>
               </Col>
               <Col>
-                <Link
-                  to={`/users/${
-                    this.props.currentUser.user.id
-                  }/messages/new`}
-                >
+                <Link to={`/users/${this.props.currentUser.user.id}/messages/new`}>
                   <FontAwesomeIcon icon={faBell} />
+                  <span className="counter">22</span>
                 </Link>
               </Col>
             </Row>

@@ -38,7 +38,7 @@ class MessageForm extends Component {
               rows="6"
             />
             <button type="submit" className="btn btn-success">
-              Add message
+              Post
             </button>
           </div>
         </div>
