@@ -6,10 +6,7 @@ body {
 nav {
   background-image: url('./images/ev.jpg');
   background-size: 100% 100%;
-}
-
-.navbar {
-  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .navbar a {
@@ -23,13 +20,32 @@ nav {
   color: white;
 }
 
-.navbar-brand.mb-0.h1 {
-  font-weight: 700;
+.navbar-brand a {
+  font-weight: 700 !important;
   color: white;
 }
 
-ul.nav.navbar-nav li {
-  margin: 0 0.5rem;
+
+/* svg */
+.svg-inline--fa {
+  font-size: 1.5rem;
+  color: white;
+}
+
+/* profile */
+.profileIco {
+  padding: 0 !important;
+}
+
+/* SecondNav */
+.secondNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  max-width: 100%;
+  background: linear-gradient(to right, rgba(71, 118, 230, .7), rgba(142, 84, 233, .5));
 }
 
 /* Hero */

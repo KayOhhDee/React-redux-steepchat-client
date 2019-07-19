@@ -2,8 +2,24 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../store/actions/auth';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  Container, Row, Col 
+} from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle, faPlus, faHome, faBell } from "@fortawesome/free-solid-svg-icons";
 
-class Navbar extends Component {
+class NavBar extends Component {
   logout = e => {
     e.preventDefault();
     this.props.logout();
@@ -11,32 +27,79 @@ class Navbar extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand">
-        <div className="container-fluid">
-          <Link to="/" className="navbar-brand mb-0 h1">
-            SteepChat
-          </Link>
-          {this.props.currentUser.isAuthenticated ? (
-            <ul className="nav navbar-nav navbar-right">
-              <li>
-                <Link to={`/users/${this.props.currentUser.user.id}/messages/new`}>New Message</Link>
-              </li>
-              <li>
-                <a onClick={this.logout}>Log out</a>
-              </li>
-            </ul>
-          ) : (
-            <ul className="nav navbar-nav navbar-right">
-              <li>
-                <Link to="/signup">Sign up</Link>
-              </li>
-              <li>
-                <Link to="/signin">Log in</Link>
-              </li>
-            </ul>
-          )}
-        </div>
-      </nav>
+      <div>
+        <nav>
+          <Navbar expand="xs">
+            <NavbarBrand>
+              <Link to="/">SteepChat</Link>
+            </NavbarBrand>
+            {this.props.currentUser.isAuthenticated ? (
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <NavLink className="profileIco">
+                    <UncontrolledDropdown nav inNavbar>
+                      <DropdownToggle className="profileIco" nav caret>
+                        <FontAwesomeIcon icon={faUserCircle} />
+                      </DropdownToggle>
+                      <DropdownMenu right>
+                        <DropdownItem>
+                          <a onClick={this.logout}>Log out</a>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            ) : (
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <NavLink>
+                    <Link to="/signup">Sign up</Link>
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink>
+                    <Link to="/signin">Log in</Link>
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            )}
+          </Navbar>
+        </nav>
+        {this.props.currentUser.isAuthenticated && (
+          <Container className="secondNav">
+            <Row>
+              <Col>
+                <Link
+                  to={`/users/${
+                    this.props.currentUser.user.id
+                  }/messages/new`}
+                >
+                  <FontAwesomeIcon icon={faPlus} />
+                </Link>
+              </Col>
+              <Col>
+                <Link
+                  to={`/users/${
+                    this.props.currentUser.user.id
+                  }/messages/new`}
+                >
+                  <FontAwesomeIcon icon={faHome} />
+                </Link>
+              </Col>
+              <Col>
+                <Link
+                  to={`/users/${
+                    this.props.currentUser.user.id
+                  }/messages/new`}
+                >
+                  <FontAwesomeIcon icon={faBell} />
+                </Link>
+              </Col>
+            </Row>
+          </Container>
+        )}
+      </div>
     );
   }
 }
@@ -47,4 +110,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { logout })(NavBar);
