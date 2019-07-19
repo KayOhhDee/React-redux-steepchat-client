@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../store/actions/auth';
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
@@ -82,8 +80,8 @@ class NavBar extends Component {
               <Col>
                 <Link to={`/users/${this.props.currentUser.user.id}/messages/new`}>
                   <FontAwesomeIcon icon={faBell} />
-                  <span className="counter">22</span>
                 </Link>
+                <span className="counter">22</span>
               </Col>
             </Row>
           </Container>

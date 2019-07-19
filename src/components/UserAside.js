@@ -3,7 +3,7 @@ import DefaultUserImg from '../images/user.png';
 
 const UserAside = ({profileImage, username}) => {
   return(
-    <aside className="col-sm-2">
+    <aside className="col-lg-3 offset-lg-1">
      <div className="panel panel-default">
       <div className="panel-body">
         <img 

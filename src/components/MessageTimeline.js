@@ -1,13 +1,17 @@
 import React from 'react';
 import MessageList from '../containers/MessageList';
 import UserAside from './UserAside';
+import { Container, Row, Col } from "reactstrap";
+
 
 const MessageTimeline = props => {
   return (
-    <div className='row'>
-      <UserAside profileImage={props.profileImage} username={props.username}/>
-      <MessageList />
-    </div>
+    <Container>
+      <Row>
+        <UserAside profileImage={props.profileImage} username={props.username}/>
+        <MessageList />
+      </Row>
+    </Container>
   )
 }
 
