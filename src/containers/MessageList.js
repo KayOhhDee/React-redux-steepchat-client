@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchMessages, removeMessage } from '../store/actions/messages';
-import MessageItem from '../components/messageItem'
+import MessageItem from '../components/messageItem';
+import { Col } from "reactstrap";
+
 
 class MessageList extends Component {
   componentDidMount() {
@@ -22,13 +24,11 @@ class MessageList extends Component {
       />
     ))
     return (
-      <div className="col-lg-7">
-        <div className="">
+      <Col lg="7">
           <ul className="list-group" id='messages'>
             {messageList}
           </ul>
-        </div>
-      </div>
+      </Col>
     )
   }
 }
