@@ -3,8 +3,12 @@ import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import DefaultUserImg from '../images/user.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
+import { 
+  faTrashAlt,
+  faComment as faCommentSolid, 
+  faHeart as faHeartSolid
+} from "@fortawesome/free-solid-svg-icons";
+import { faComment, faHeart, faEye } from "@fortawesome/free-regular-svg-icons";
 
 const MessageItem = ({ date, profileImage, text, username, removeMessage, isCorrectUser }) => {
   return (
@@ -31,16 +35,19 @@ const MessageItem = ({ date, profileImage, text, username, removeMessage, isCorr
               <FontAwesomeIcon icon={faTrashAlt} />
             </span>
           )}
+            <span className="view-btn">
+              <FontAwesomeIcon icon={faEye} />
+            </span>
         </div>
         <div>
-          <p>{text}</p>
+          <p className="post">{text}</p>
         </div>
-        <div>
+        <div className="reactions">
           <span>
-            <FontAwesomeIcon icon={faHeart} />
+            <FontAwesomeIcon icon={faHeart} /> {"2 likes"}
           </span>
           <span>
-            <FontAwesomeIcon icon={faComment} />
+            <FontAwesomeIcon icon={faComment} /> {"4 comments"}
           </span>
         </div>
       </li>

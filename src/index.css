@@ -154,10 +154,28 @@ nav {
   margin: 0;
 }
 
+.post {
+  font-size: 0.9rem;
+}
+
 .delete-btn {
   cursor: pointer;
   position: absolute;
   right: 20px;
+}
+
+.view-btn {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}
+
+.reactions span {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: .8rem;
+  color: #6c757d;
 }
 
 [data-icon="trash-alt"] {
@@ -165,8 +183,17 @@ nav {
   font-size: 1.1rem;
 }
 
+[data-icon="eye"] {
+  color: #8E54E9;
+  font-size: 1.1rem;
+}
+
 [data-icon="heart"], [data-icon="comment"] {
   color: #8E54E9;
+  font-size: 1.2rem;
+  margin-left: .8rem;
+  margin-right: .5rem;
+  cursor: pointer;
 }
 
 .btn:hover {
