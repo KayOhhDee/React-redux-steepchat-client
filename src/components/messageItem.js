@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faComment, faHeart, faEye } from "@fortawesome/free-regular-svg-icons";
 
+
 const MessageItem = ({ date, profileImage, text, username, removeMessage, isCorrectUser }) => {
   return (
     <div>
@@ -31,23 +32,31 @@ const MessageItem = ({ date, profileImage, text, username, removeMessage, isCorr
             </p>
           </div>
           {isCorrectUser && (
-            <span className="delete-btn" onClick={removeMessage}>
+            <span className="delete-btn tooltipper" onClick={removeMessage}>
               <FontAwesomeIcon icon={faTrashAlt} />
+              <span className="tooltiptext">Delete</span>
             </span>
           )}
-            <span className="view-btn">
-              <FontAwesomeIcon icon={faEye} />
-            </span>
+          <span className="view-btn tooltipper">
+            <FontAwesomeIcon icon={faEye} />
+            <span className="tooltiptext">View</span>
+          </span>
         </div>
         <div>
           <p className="post">{text}</p>
         </div>
         <div className="reactions">
           <span>
-            <FontAwesomeIcon icon={faHeart} /> {"2 likes"}
+            <span className="tooltipper">
+              <FontAwesomeIcon icon={faHeart} />
+              <span className="tooltiptext">Like</span>
+            </span>{"2 likes"}
           </span>
           <span>
-            <FontAwesomeIcon icon={faComment} /> {"4 comments"}
+            <span className="tooltipper">
+              <FontAwesomeIcon icon={faComment} />
+              <span className="tooltiptext">Comment</span>
+            </span>{"4 comments"}
           </span>
         </div>
       </li>

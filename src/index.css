@@ -161,7 +161,7 @@ nav {
 .delete-btn {
   cursor: pointer;
   position: absolute;
-  right: 20px;
+  right: 22px;
 }
 
 .view-btn {
@@ -176,6 +176,11 @@ nav {
   margin-left: 5px;
   font-size: .8rem;
   color: #6c757d;
+}
+
+.reactions .tooltipper {
+  position: relative;
+  vertical-align: sub;
 }
 
 [data-icon="trash-alt"] {
@@ -383,5 +388,59 @@ textarea {
   outline: none !important;
   font-size: 1rem;
   box-shadow: 0 0 8px #66757f;
+}
+
+
+/* Tooltip */
+
+.tooltipper .tooltiptext {
+  visibility: hidden;
+  width: auto;
+  background-color: rgba(0, 0, 0, .9);
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 3px 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  opacity: 0;
+  transition: opacity 0.7s;
+  font-size: .785rem;
+}
+
+.view-btn.tooltipper .tooltiptext {
+  margin-left: -120%;
+}
+
+.delete-btn.tooltipper .tooltiptext {
+  margin-left: -180%;
+}
+
+.tooltipper [data-icon="heart"] + .tooltiptext {
+  margin-left: -50%;
+  bottom: 170%;
+}
+
+.tooltipper [data-icon="comment"] + .tooltiptext {
+  margin-left: -88%;
+  bottom: 170%;
+}
+
+.tooltipper .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, .9) transparent transparent transparent;
+}
+
+.tooltipper:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 

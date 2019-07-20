@@ -16,6 +16,7 @@ import {
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faPlus, faHome, faBell } from "@fortawesome/free-solid-svg-icons";
+import { UncontrolledTooltip } from "reactstrap";
 
 class NavBar extends Component {
   logout = e => {
@@ -72,20 +73,29 @@ class NavBar extends Component {
           <Container className="secondNav">
             <Row>
               <Col>
-                <Link to={`/users/${this.props.currentUser.user.id}/messages/new`}>
+                <Link id="NewMessage" to={`/users/${this.props.currentUser.user.id}/messages/new`}>
                   <FontAwesomeIcon icon={faPlus} />
                 </Link>
+                <UncontrolledTooltip placement="top" target="NewMessage">
+                  New Post
+                </UncontrolledTooltip>
               </Col>
               <Col>
                 <Link to="/">
-                  <FontAwesomeIcon icon={faHome} />
+                  <FontAwesomeIcon id="timeline" icon={faHome} />
                 </Link>
+                <UncontrolledTooltip placement="top" target="timeline">
+                  Timeline
+                </UncontrolledTooltip>
               </Col>
               <Col>
-                <Link to={`/users/${this.props.currentUser.user.id}/messages/new`}>
+                <Link id="notifications" to={`/users/${this.props.currentUser.user.id}/messages/new`}>
                   <FontAwesomeIcon icon={faBell} />
                 </Link>
                 <span className="counter">22</span>
+                <UncontrolledTooltip placement="top" target="notifications">
+                  Notifications
+                </UncontrolledTooltip>
               </Col>
             </Row>
           </Container>

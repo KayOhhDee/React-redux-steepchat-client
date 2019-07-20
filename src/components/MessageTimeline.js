@@ -1,7 +1,7 @@
 import React from 'react';
 import MessageList from '../containers/MessageList';
 import UserAside from './UserAside';
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row } from "reactstrap";
 
 
 const MessageTimeline = props => {
