@@ -127,42 +127,50 @@ nav {
   border: 2px solid white;
 }
 
-/* Messages */
+/* Timeline*/
 
 #messages .list-group-item {
-  display: flex;
-  align-items: flex-start;
-  padding: 7px 20px 12px;
-  margin-bottom: 15px;
-  box-shadow: 0 0 8px #66757f;
+  position: relative;
+  padding: 10px 20px 12px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16),
+  0 2px 10px 0 rgba(0, 0, 0, .12);
 }
 
-#messages:not(.no-hover) .list-group-item:hover {
-  background-color: #e6ecf0;
+.list-group-item .list-item-info {
+  display: flex;
+  align-items: flex-start;
 }
 
 .timeline-image {
   border-radius: 50px;
   height: 45px;
   width: 45px;
-  margin: 2px 28px 10px 10px;
+  margin: -1px 8px 10px 0;
+}
+
+.text-muted {
+  font-size: .75rem;
+  margin: 0;
+}
+
+.delete-btn {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+}
+
+[data-icon="trash-alt"] {
+  color: #FF3547;
+  font-size: 1.1rem;
+}
+
+[data-icon="heart"], [data-icon="comment"] {
+  color: #8E54E9;
 }
 
 .btn:hover {
   cursor: pointer;
-}
-
-a.btn.btn-danger {
-  padding: 0.1rem 0.4rem !important;
-  text-decoration: none;
-  letter-spacing: .055rem;
-  color: #fff;
-  border: 2px solid transparent;
-  border-radius: 0 !important;
-  outline: none !important;
-  font-size: 1rem;
-  font-weight: 300;
-  box-shadow: 0 0 8px #66757f;
 }
 
 .btn.btn-success {
@@ -179,11 +187,6 @@ a.btn.btn-danger {
   margin-top: 1.2rem;
 }
 
-a.btn.btn-danger:hover {
-  background: transparent;
-  border: 2px solid #000;
-  color: #000;
-}
 
 /* Card */
 
@@ -354,3 +357,4 @@ textarea {
   font-size: 1rem;
   box-shadow: 0 0 8px #66757f;
 }
+
