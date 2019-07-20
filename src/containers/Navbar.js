@@ -41,6 +41,10 @@ class NavBar extends Component {
                       </DropdownToggle>
                       <DropdownMenu right>
                         <DropdownItem>
+                          <a onClick={this.logout}>Profile</a>
+                        </DropdownItem>
+                        <DropdownItem divider />
+                        <DropdownItem>
                           <a onClick={this.logout}>Log out</a>
                         </DropdownItem>
                       </DropdownMenu>
