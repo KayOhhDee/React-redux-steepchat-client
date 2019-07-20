@@ -24,7 +24,7 @@ class MessageList extends Component {
       />
     ))
     return (
-      <Col xl="7">
+      <Col className="messageList" xl="7">
           <ul className="list-group" id='messages'>
             {messageList}
           </ul>

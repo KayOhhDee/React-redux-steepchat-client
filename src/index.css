@@ -31,6 +31,7 @@ nav {
 .svg-inline--fa {
   font-size: 1.5rem;
   color: white;
+  outline: none;
 }
 
 /* profile */
@@ -196,10 +197,20 @@ nav {
 [data-icon="heart"], [data-icon="comment"] {
   color: #8E54E9;
   font-size: 1.2rem;
-  margin-left: .8rem;
-  margin-right: .5rem;
+  margin-left: .4rem;
+  margin-right: .2rem;
   cursor: pointer;
 }
+
+@media screen and (max-width: 767px) {
+  .messageList {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Post Button */
+
 
 .btn:hover {
   cursor: pointer;
@@ -235,6 +246,14 @@ nav {
   background-color: #fff;
   background-clip: border-box;
   border-radius: .25rem;
+  margin-bottom: 2rem !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .card {
+    width: 247.5px !important;
+    margin: 0 auto;
+  }
 }
 
 .view {
@@ -419,12 +438,12 @@ textarea {
 }
 
 .tooltipper [data-icon="heart"] + .tooltiptext {
-  margin-left: -50%;
+  margin-left: -70%;
   bottom: 170%;
 }
 
 .tooltipper [data-icon="comment"] + .tooltiptext {
-  margin-left: -88%;
+  margin-left: -128%;
   bottom: 170%;
 }
 
