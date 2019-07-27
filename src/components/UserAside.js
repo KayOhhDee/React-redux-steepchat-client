@@ -17,6 +17,12 @@ const UserAside = ({profileImage, username, uploadRequest}) => {
 
     uploadRequest(data);
   }
+
+  const handleEditImage = () => {
+    let fileInput = document.getElementById('fileInput');
+    fileInput.click();
+  }
+  
   return (
     <Col xl={{ size: 3, offset: 1 }}>
       <aside>
@@ -29,8 +35,12 @@ const UserAside = ({profileImage, username, uploadRequest}) => {
               width="160"
               height="150"
             />
-            <Link to="/"><span className="img-edit"><FontAwesomeIcon icon={faPen}/></span></Link>
-            <input type="file" onChange={handleFileUpload} />
+            <Link to="/">
+              <span onClick={handleEditImage} className="img-edit">
+                <FontAwesomeIcon icon={faPen}/>
+              </span>
+            </Link>
+            <input id="fileInput" type="file" onChange={handleFileUpload} />
           </div>
           <div className="card-body">
             <h4 className="card-body-username">
@@ -43,7 +53,11 @@ const UserAside = ({profileImage, username, uploadRequest}) => {
             <p className="card-body-web">
               <FontAwesomeIcon icon={faLink} /> <a href={"www.google.com"}>{"www.google.com"}</a>
             </p>
-            <Link to="/"><span className="card-body-edit"><FontAwesomeIcon icon={faPen}/></span></Link>
+            <Link to="/">
+              <span className="card-body-edit">
+                <FontAwesomeIcon icon={faPen}/>
+              </span>
+            </Link>
           </div>
           <div className="card-footer">
             <FontAwesomeIcon icon={faCalendar} /> Joined {"July, 2019"}

@@ -464,3 +464,8 @@ textarea {
   opacity: 1;
 }
 
+/* Image Edit Button */
+
+#fileInput {
+  display: none;
+}
