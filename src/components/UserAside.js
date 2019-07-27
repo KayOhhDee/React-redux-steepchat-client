@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { uploadRequest } from "../store/actions/user";
 import DefaultUserImg from '../images/user.png';
 import { Col } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -6,7 +8,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faLink, faCalendar, faPen } from "@fortawesome/free-solid-svg-icons";
 
 
-const UserAside = ({profileImage, username}) => {
+const UserAside = ({profileImage, username, uploadRequest}) => {
+  const handleFileUpload = ({ target }) => {
+    
+    const image = target.files[0];
+    let data = new FormData();
+    data.append("image", image, image.name);
+
+    uploadRequest(data);
+  }
   return (
     <Col xl={{ size: 3, offset: 1 }}>
       <aside>
@@ -20,6 +30,7 @@ const UserAside = ({profileImage, username}) => {
               height="150"
             />
             <Link to="/"><span className="img-edit"><FontAwesomeIcon icon={faPen}/></span></Link>
+            <input type="file" onChange={handleFileUpload} />
           </div>
           <div className="card-body">
             <h4 className="card-body-username">
@@ -43,4 +54,4 @@ const UserAside = ({profileImage, username}) => {
   );
 }
 
-export default UserAside;
+export default connect(null, { uploadRequest })(UserAside);
