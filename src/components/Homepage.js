@@ -23,6 +23,8 @@ const Homepage = ({ currentUser }) => {
       <MessageTimeline 
         profileImage={currentUser.user.profileImage}
         username={currentUser.user.username}
+        loading={currentUser.loading}
+        authenticated={currentUser.isAuthenticated}
       />
     </div>
   )

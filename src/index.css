@@ -336,9 +336,9 @@ nav {
 }
 
 .card-body-edit > svg.svg-inline--fa{
-  position: absolute;
-  top: 140px;
-  left: 90px;
+  position: relative;
+  left: 87px;
+  width: 8% !important;
   color: #8E54E9 !important;
   font-size: 18px;
 }

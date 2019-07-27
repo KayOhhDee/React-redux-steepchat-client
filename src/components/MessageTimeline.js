@@ -4,15 +4,20 @@ import UserAside from './UserAside';
 import { Container, Row } from "reactstrap";
 
 
-const MessageTimeline = props => {
+const MessageTimeline = ({profileImage, username, loading, authenticated}) => {
   return (
     <Container>
       <Row>
-        <UserAside profileImage={props.profileImage} username={props.username}/>
+        <UserAside
+          profileImage={profileImage}
+          username={username}
+          loading={loading}
+          authenticated={authenticated}
+        />
         <MessageList />
       </Row>
     </Container>
-  )
+  );
 }
 
 export default MessageTimeline;

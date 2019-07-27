@@ -1,9 +1,11 @@
 import { apiCall } from "../../services/api";
 import { addError } from "./error";
 import { setCurrentUser } from "./auth";
+import { LOADING_USER } from "../actionTypes";
 
 
 export const getUserInfo = () => (dispatch, getState) => {
+  dispatch({type: LOADING_USER});
   let { currentUser } = getState();
   const id = currentUser.user.id;
   return apiCall("get", `/api/user/${id}`)
@@ -12,6 +14,7 @@ export const getUserInfo = () => (dispatch, getState) => {
 }
 
 export const uploadRequest = ( data ) => (dispatch, getState) => {  
+  dispatch({ type: LOADING_USER });
   let { currentUser } = getState();
   const id = currentUser.user.id;
   return apiCall('put', `/api/user/${id}/image`, data)
