@@ -25,6 +25,10 @@ const Homepage = ({ currentUser }) => {
         username={currentUser.user.username}
         loading={currentUser.loading}
         authenticated={currentUser.isAuthenticated}
+        bio={currentUser.user.bio}
+        website={currentUser.user.website}
+        location={currentUser.user.location}
+        date={currentUser.user.createdAt}
       />
     </div>
   )

@@ -4,15 +4,24 @@ import { uploadRequest } from "../store/actions/user";
 import DefaultUserImg from '../images/user.png';
 import { Col, Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import Moment from "react-moment";
 import { UncontrolledTooltip } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faLink, faCalendar, faPen } from "@fortawesome/free-solid-svg-icons";
 
 
-const UserAside = ({profileImage, username, loading, authenticated, uploadRequest}) => {
-  console.log(authenticated)
-  const handleFileUpload = ({ target }) => {
-    
+const UserAside = ({
+  profileImage, 
+  username, 
+  loading, 
+  authenticated, 
+  bio, 
+  website, 
+  location, 
+  date, 
+  uploadRequest
+}) => {
+  const handleFileUpload = ({ target }) => {  
     const image = target.files[0];
     let data = new FormData();
     data.append("image", image, image.name);
@@ -52,13 +61,12 @@ const UserAside = ({profileImage, username, loading, authenticated, uploadReques
             <h4 className="card-body-username">
               <Link to="/">@{username}</Link>
             </h4>
-            <p className="card-body-bio">Hi Im new here and I just wanna make friends</p>
-            <p className="card-body-location">
-              <FontAwesomeIcon icon={faMapMarkerAlt} />  {"Ghana, Kumasi"}
-            </p>
-            <p className="card-body-web">
-              <FontAwesomeIcon icon={faLink} /> <a href={"www.google.com"}>{"www.google.com"}</a>
-            </p>
+            {bio && <p className="card-body-bio">{bio}</p>}
+            {location && <p className="card-body-location">
+              <FontAwesomeIcon icon={faMapMarkerAlt} />{' '}{location}</p>}
+            {website && <p className="card-body-web">
+              <FontAwesomeIcon icon={faLink} /> <a href={website}>{website}</a>
+            </p>}
             <Link to="/">
               <span  className="card-body-edit">
                 <FontAwesomeIcon id="editInfo" icon={faPen}/>
@@ -69,7 +77,10 @@ const UserAside = ({profileImage, username, loading, authenticated, uploadReques
             </Link>
           </div>
           <div className="card-footer">
-            <FontAwesomeIcon icon={faCalendar} /> Joined {"July, 2019"}
+            <FontAwesomeIcon icon={faCalendar} /> Joined{' '} 
+              <Moment format="Do MMM YYYY">
+                {date}
+              </Moment>
           </div>
         </div>
       ) : (

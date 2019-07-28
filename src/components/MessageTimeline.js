@@ -4,7 +4,7 @@ import UserAside from './UserAside';
 import { Container, Row } from "reactstrap";
 
 
-const MessageTimeline = ({profileImage, username, loading, authenticated}) => {
+const MessageTimeline = ({profileImage, username, loading, authenticated, bio, website, location, date}) => {
   return (
     <Container>
       <Row>
@@ -13,6 +13,10 @@ const MessageTimeline = ({profileImage, username, loading, authenticated}) => {
           username={username}
           loading={loading}
           authenticated={authenticated}
+          bio={bio}
+          website={website}
+          location={location}
+          date={date}
         />
         <MessageList />
       </Row>
