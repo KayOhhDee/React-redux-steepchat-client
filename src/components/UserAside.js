@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from "react-redux";
 import { uploadRequest } from "../store/actions/user";
 import DefaultUserImg from '../images/user.png';
-import { Col, Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import EditInfo from './EditInfo';
 import Moment from "react-moment";
-import { UncontrolledTooltip } from "reactstrap";
+import { UncontrolledTooltip, Col, Button} from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faLink, faCalendar, faPen } from "@fortawesome/free-solid-svg-icons";
 
@@ -67,14 +67,7 @@ const UserAside = ({
             {website && <p className="card-body-web">
               <FontAwesomeIcon icon={faLink} /> <a href={website}>{website}</a>
             </p>}
-            <Link to="/">
-              <span  className="card-body-edit">
-                <FontAwesomeIcon id="editInfo" icon={faPen}/>
-                <UncontrolledTooltip placement="top" target="editInfo">
-                  Edit Info
-                </UncontrolledTooltip>
-              </span>
-            </Link>
+            <EditInfo />
           </div>
           <div className="card-footer">
             <FontAwesomeIcon icon={faCalendar} /> Joined{' '} 

@@ -21,3 +21,12 @@ export const uploadRequest = ( data ) => (dispatch, getState) => {
     .then( _ => {dispatch(getUserInfo())})
     .catch(error => dispatch(addError(error)))
 }   
+
+export const editUserInfo = (details) => (dispatch, getState) => {
+  dispatch({ type: LOADING_USER });
+  let { currentUser } = getState();
+  const id = currentUser.user.id;
+  return apiCall('put', `/api/user/${id}`, details)
+    .then(_ => {dispatch(getUserInfo())})
+    .catch(error => dispatch(addError(error)))
+} 

@@ -30,7 +30,6 @@ class MessageForm extends Component {
           <div className="col-md-6">
             <textarea
               className="form-control"
-              id="exampleMessage1"
               placeholder="Enter message"
               onChange={e => this.setState({ message: e.target.value })}
               value={this.state.message}
