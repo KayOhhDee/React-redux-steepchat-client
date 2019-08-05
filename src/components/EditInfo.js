@@ -74,7 +74,6 @@ class EditInfo extends Component {
           isOpen={this.state.modal}
           toggle={this.toggle}
           className={this.props.className}
-          unmountOnClose={this.state.unmountOnClose}
         >
           <ModalHeader toggle={this.toggle}>Edit you info</ModalHeader>
           <ModalBody>

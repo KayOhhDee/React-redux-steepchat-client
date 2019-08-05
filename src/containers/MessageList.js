@@ -8,7 +8,6 @@ import {
 } from "../store/actions/messages";
 import MessageItem from "../components/messageItem";
 import { Col } from "reactstrap";
-import currentUser from "../store/reducers/currentUser";
 
 class MessageList extends Component {
   componentDidMount() {
