@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import DefaultUserImg from '../images/user.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
-  faTrashAlt,
+  faEllipsisH,
   faComment as faCommentSolid, 
   faHeart as faHeartSolid
 } from "@fortawesome/free-solid-svg-icons";
 import { faComment, faHeart, faEye } from "@fortawesome/free-regular-svg-icons";
+import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 
 
 const MessageItem = ({ date, profileImage, text, username, removeMessage, isCorrectUser }) => {
@@ -32,10 +33,25 @@ const MessageItem = ({ date, profileImage, text, username, removeMessage, isCorr
             </p>
           </div>
           {isCorrectUser && (
-            <span className="delete-btn tooltipper" onClick={removeMessage}>
-              <FontAwesomeIcon icon={faTrashAlt} />
-              <span className="tooltiptext">Delete</span>
-            </span>
+            <UncontrolledDropdown className="option-btn">
+              <DropdownToggle className="option-btn">
+                <span>
+                  <FontAwesomeIcon icon={faEllipsisH} />
+                </span>
+              </DropdownToggle>
+              <DropdownMenu style={{
+                  padding: "0", 
+                  minWidth: "0",
+                  top: "32px",
+                  left: "-65px"
+                }}>
+                <DropdownItem style={{
+                  textAlign: "center",
+                  padding: ".2rem .9rem",
+                  fontSize: ".95rem"
+                }} onClick={removeMessage}>Delete</DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
           )}
           <span className="view-btn tooltipper">
             <FontAwesomeIcon icon={faEye} />
@@ -50,13 +66,15 @@ const MessageItem = ({ date, profileImage, text, username, removeMessage, isCorr
             <span className="tooltipper">
               <FontAwesomeIcon icon={faHeart} />
               <span className="tooltiptext">Like</span>
-            </span>{"2 likes"}
+            </span>
+            {"2 likes"}
           </span>
           <span>
             <span className="tooltipper">
               <FontAwesomeIcon icon={faComment} />
               <span className="tooltiptext">Comment</span>
-            </span>{"4 comments"}
+            </span>
+            {"4 comments"}
           </span>
         </div>
       </li>

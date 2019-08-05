@@ -20,16 +20,7 @@ const Homepage = ({ currentUser }) => {
   }
   return(
     <div>
-      <MessageTimeline 
-        profileImage={currentUser.user.profileImage}
-        username={currentUser.user.username}
-        loading={currentUser.loading}
-        authenticated={currentUser.isAuthenticated}
-        bio={currentUser.user.bio}
-        website={currentUser.user.website}
-        location={currentUser.user.location}
-        date={currentUser.user.createdAt}
-      />
+      <MessageTimeline />
     </div>
   )
 }

@@ -159,10 +159,28 @@ nav {
   font-size: 0.9rem;
 }
 
-.delete-btn {
+.option-btn {
   cursor: pointer;
   position: absolute;
-  right: 22px;
+  right: 4px;
+  background: none;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.option-btn:hover {
+  background: none;
+  border: none;
+}
+
+.option-btn:active {
+  background: none !important;
+}
+
+.option-btn:focus {
+  box-shadow: none !important;
+  outline: none !important;
 }
 
 .view-btn {
@@ -184,8 +202,8 @@ nav {
   vertical-align: sub;
 }
 
-[data-icon="trash-alt"] {
-  color: #FF3547;
+[data-icon="ellipsis-h"] {
+  color: #AEB4B7;
   font-size: 1.1rem;
 }
 

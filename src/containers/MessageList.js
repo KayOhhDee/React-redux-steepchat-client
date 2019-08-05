@@ -36,7 +36,7 @@ class MessageList extends Component {
 function mapStateToProps(state) {
   return {
     messages: state.messages,
-    currentUser: state.currentUser.user.id
+    currentUser: state.currentUser.user._id
   }
 }
 
