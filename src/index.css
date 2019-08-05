@@ -403,10 +403,6 @@ nav {
   background: url('./images/ev-background.jpg')
 }
 
-/* textarea {
-  box-shadow: 0 0 8px #66757f;
-} */
-
 /* Auth Form */
 
 .authColor {
@@ -454,6 +450,11 @@ nav {
 
 .delete-btn.tooltipper .tooltiptext {
   margin-left: -180%;
+}
+
+.tooltipper [data-heartsolid] + .tooltiptext {
+  margin-left: -90% !important;
+  bottom: 170%;
 }
 
 .tooltipper [data-icon="heart"] + .tooltiptext {

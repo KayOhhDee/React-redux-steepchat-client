@@ -1,43 +1,88 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchMessages, removeMessage } from '../store/actions/messages';
-import MessageItem from '../components/messageItem';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import {
+  fetchMessages,
+  removeMessage,
+  likeMessage,
+  unlikeMessage
+} from "../store/actions/messages";
+import MessageItem from "../components/messageItem";
 import { Col } from "reactstrap";
-
+import currentUser from "../store/reducers/currentUser";
 
 class MessageList extends Component {
   componentDidMount() {
     this.props.fetchMessages();
   }
 
+  removeMessage = (user_id, message_id) => {
+    this.props.removeMessage(user_id, message_id)
+  }
+
+  likedMessage = message_id => {
+    if (
+      this.props.currentUser.user.likes &&
+      this.props.currentUser.user.likes.find(l => l.message === message_id)
+    )
+      return true;
+    else return false;
+  };
+
+  likeMessage = (message_id) => {
+    this.props.likeMessage(message_id)
+  }
+
+  unlikeMessage = (message_id) => {
+    this.props.unlikeMessage(message_id)
+  }
+
   render() {
-    const { messages, removeMessage, currentUser } = this.props;
-    let messageList = messages.map(item => (
-      <MessageItem 
-        key={item._id}
-        date={item.createdAt}
-        text={item.text}
-        username={item.user.username}
-        profileImage={item.user.profileImage}
-        removeMessage={removeMessage.bind(this, item.user._id, item._id)}
-        isCorrectUser={currentUser === item.user._id}
-      />
-    ))
+    const { messages, currentUser, loading } = this.props;
+    let messageList = !loading ? (
+      messages.map(item => (
+        <MessageItem
+          key={item._id}
+          date={item.createdAt}
+          text={item.text}
+          username={item.user.username}
+          profileImage={item.user.profileImage}
+          likeCount={item.likeCount}
+          commentCount={item.commentCount}
+          removeMessage={this.removeMessage.bind(this, item.user._id, item._id)}
+          likedMessage={this.likedMessage.bind(this, item._id)}
+          likeMessage={this.likeMessage.bind(this, item._id)}
+          unlikeMessage={this.unlikeMessage.bind(this, item._id)}
+          isCorrectUser={currentUser.user._id === item.user._id}
+          authenticated={currentUser.isAuthenticated}
+        />
+      ))
+    ) : (
+      <p>loading...</p>
+    );
     return (
       <Col className="messageList" xl="7">
-          <ul className="list-group" id='messages'>
-            {messageList}
-          </ul>
+        <ul className="list-group" id="messages">
+          {messageList}
+        </ul>
       </Col>
-    )
+    );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages,
-    currentUser: state.currentUser.user._id
-  }
+    loading: state.messages.loading,
+    messages: state.messages.messages,
+    currentUser: state.currentUser
+  };
 }
 
-export default connect(mapStateToProps, { fetchMessages, removeMessage })(MessageList)
+export default connect(
+  mapStateToProps,
+  {
+    fetchMessages,
+    removeMessage,
+    likeMessage,
+    unlikeMessage
+  }
+)(MessageList);

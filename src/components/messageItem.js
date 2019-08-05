@@ -5,14 +5,26 @@ import DefaultUserImg from '../images/user.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faEllipsisH,
-  faComment as faCommentSolid, 
   faHeart as faHeartSolid
 } from "@fortawesome/free-solid-svg-icons";
 import { faComment, faHeart, faEye } from "@fortawesome/free-regular-svg-icons";
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 
 
-const MessageItem = ({ date, profileImage, text, username, removeMessage, isCorrectUser }) => {
+const MessageItem = ({ 
+  date, 
+  profileImage, 
+  text, 
+  username,
+  likeCount,
+  commentCount, 
+  removeMessage, 
+  isCorrectUser,
+  likeMessage,
+  unlikeMessage,
+  likedMessage,
+  authenticated 
+}) => {
   return (
     <div>
       <li className="list-group-item">
@@ -39,17 +51,24 @@ const MessageItem = ({ date, profileImage, text, username, removeMessage, isCorr
                   <FontAwesomeIcon icon={faEllipsisH} />
                 </span>
               </DropdownToggle>
-              <DropdownMenu style={{
-                  padding: "0", 
+              <DropdownMenu
+                style={{
+                  padding: "0",
                   minWidth: "0",
                   top: "32px",
                   left: "-65px"
-                }}>
-                <DropdownItem style={{
-                  textAlign: "center",
-                  padding: ".2rem .9rem",
-                  fontSize: ".95rem"
-                }} onClick={removeMessage}>Delete</DropdownItem>
+                }}
+              >
+                <DropdownItem
+                  style={{
+                    textAlign: "center",
+                    padding: ".2rem .9rem",
+                    fontSize: ".95rem"
+                  }}
+                  onClick={removeMessage}
+                >
+                  Delete
+                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           )}
@@ -63,18 +82,32 @@ const MessageItem = ({ date, profileImage, text, username, removeMessage, isCorr
         </div>
         <div className="reactions">
           <span>
-            <span className="tooltipper">
-              <FontAwesomeIcon icon={faHeart} />
-              <span className="tooltiptext">Like</span>
-            </span>
-            {"2 likes"}
+            {!authenticated ? (
+              <Link to="/signin">
+                <span className="tooltipper">
+                  <FontAwesomeIcon icon={faHeart} />
+                  <span className="tooltiptext">Like</span>
+                </span>
+              </Link>
+            ) : likedMessage() ? (
+              <span className="tooltipper">
+                <FontAwesomeIcon data-heartsolid onClick={unlikeMessage} icon={faHeartSolid} />
+                <span className="tooltiptext">Unlike</span>
+              </span>
+            ) : (
+              <span className="tooltipper">
+                <FontAwesomeIcon onClick={likeMessage} icon={faHeart} />
+                <span className="tooltiptext">Like</span>
+              </span>
+            )}
+            {`${likeCount} likes`}
           </span>
           <span>
             <span className="tooltipper">
               <FontAwesomeIcon icon={faComment} />
               <span className="tooltiptext">Comment</span>
             </span>
-            {"4 comments"}
+            {`${commentCount} comments`}
           </span>
         </div>
       </li>

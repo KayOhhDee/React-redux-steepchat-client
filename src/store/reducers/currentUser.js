@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER, LOADING_USER } from '../actionTypes';
+import { SET_CURRENT_USER, LOADING_USER, LIKE_MESSAGE, UNLIKE_MESSAGE  } from '../actionTypes';
 
 const DEFAULT_STATE = {
   isAuthenticated: false,
@@ -19,6 +19,28 @@ export default (state = DEFAULT_STATE, action) => {
         ...state,
         loading: true
       }
+    case LIKE_MESSAGE: 
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          likes: [
+            ...state.user.likes,
+            {
+              user: state.user._id,
+              message: action.message._id
+            }
+          ]
+        }
+      }
+    case UNLIKE_MESSAGE:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          likes: state.user.likes.filter(l => l.message !== action.message._id)
+        }
+      };
     default:
       return state;
   }
