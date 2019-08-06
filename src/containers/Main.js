@@ -47,7 +47,7 @@ const Main = props => {
             );
           }}
         />
-        <Route path="/users/:id/messages/new" component={withAuth(MessageForm)} />
+        <Route path="/" component={withAuth(MessageForm)} />
       </Switch>
     </div>
   );

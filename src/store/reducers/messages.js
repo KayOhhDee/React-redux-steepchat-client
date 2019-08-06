@@ -2,7 +2,8 @@ import {
   LOAD_MESSAGES, 
   REMOVE_MESSAGE, 
   LOAD_MESSAGE,
-  LOADING_DATA, 
+  LOADING_DATA,
+  POST_MESSAGE, 
   LIKE_MESSAGE, 
   UNLIKE_MESSAGE 
   } from '../actionTypes';
@@ -25,6 +26,14 @@ export default (state= DEFAULT_STATE, action) => {
       return {
         ...state,
         loading: true
+      }
+    case POST_MESSAGE: 
+      return {
+        ...state,
+        messages: [
+          action.message,
+          ...state.messages
+        ]
       }
     case REMOVE_MESSAGE:
       return {

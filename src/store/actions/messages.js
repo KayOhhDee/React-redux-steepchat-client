@@ -1,11 +1,16 @@
 import { apiCall } from '../../services/api';
 import { addError } from './error';
-import { LOAD_MESSAGES, REMOVE_MESSAGE, LIKE_MESSAGE, UNLIKE_MESSAGE } from '../actionTypes';
+import { LOAD_MESSAGES, REMOVE_MESSAGE, LIKE_MESSAGE, UNLIKE_MESSAGE, POST_MESSAGE } from '../actionTypes';
 
 const loadMessages = messages => ({
   type: LOAD_MESSAGES,
   messages
 });
+
+const postMessage = message => ({
+  type: POST_MESSAGE,
+  message
+})
 
 const remove = id => ({
   type: REMOVE_MESSAGE,
@@ -38,7 +43,7 @@ export const postNewMessage = text => (dispatch, getState) => {
   let { currentUser } = getState();
   const id = currentUser.user._id;
   return apiCall('post', `/api/users/${id}/messages`, { text })
-    .then(res => {})
+    .then(message => dispatch(postMessage(message)))
     .catch(err => dispatch(addError(err.message)));
 }
 

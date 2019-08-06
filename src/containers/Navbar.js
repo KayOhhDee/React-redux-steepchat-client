@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import MessageForm from './MessageForm'
 import { logout } from '../store/actions/auth';
 import {
   Navbar,
@@ -12,11 +13,11 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  UncontrolledTooltip,
   Container, Row, Col 
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserCircle, faPlus, faHome, faBell } from "@fortawesome/free-solid-svg-icons";
-import { UncontrolledTooltip } from "reactstrap";
+import { faUserCircle, faHome, faBell } from "@fortawesome/free-solid-svg-icons";
 
 class NavBar extends Component {
   logout = e => {
@@ -73,12 +74,7 @@ class NavBar extends Component {
           <Container className="secondNav">
             <Row>
               <Col>
-                <Link id="NewMessage" to={`/users/${this.props.currentUser.user.id}/messages/new`}>
-                  <FontAwesomeIcon icon={faPlus} />
-                </Link>
-                <UncontrolledTooltip placement="top" target="NewMessage">
-                  New Post
-                </UncontrolledTooltip>
+                <MessageForm />
               </Col>
               <Col>
                 <Link to="/">
@@ -91,11 +87,11 @@ class NavBar extends Component {
               <Col>
                 <Link id="notifications" to={`/users/${this.props.currentUser.user.id}/messages/new`}>
                   <FontAwesomeIcon icon={faBell} />
+                  <UncontrolledTooltip placement="top" target="notifications">
+                    Notifications
+                  </UncontrolledTooltip>
                 </Link>
                 <span className="counter">22</span>
-                <UncontrolledTooltip placement="top" target="notifications">
-                  Notifications
-                </UncontrolledTooltip>
               </Col>
             </Row>
           </Container>
