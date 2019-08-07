@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import DefaultUserImg from '../images/user.png';
-import DeleteMessage from './DeleteMessage'
+import DeleteMessage from './DeleteMessage';
+import MessageModal from './MessageModal';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faEllipsisH,
@@ -17,12 +18,20 @@ class MessageItem extends Component {
 
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
+    this.toggle = this.toggle.bind(this)
 
     this.myRef = React.createRef();
 
     this.state = {
-      popupVisible: false
+      popupVisible: false,
+      modal: false
     };
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
   
   handleDeleteClick() {
@@ -59,7 +68,9 @@ class MessageItem extends Component {
       likeMessage,
       unlikeMessage,
       likedMessage,
-      authenticated
+      authenticated,
+      messageId,
+      userId
     } = this.props;
 
     return (
@@ -94,7 +105,7 @@ class MessageItem extends Component {
               </div>
             )}
             <span className="view-btn tooltipper">
-              <FontAwesomeIcon icon={faEye} />
+              <FontAwesomeIcon onClick={this.toggle} icon={faEye} />
               <span className="tooltiptext">View</span>
             </span>
           </div>
@@ -129,12 +140,24 @@ class MessageItem extends Component {
             </span>
             <span>
               <span className="tooltipper">
-                <FontAwesomeIcon icon={faComment} />
+                <FontAwesomeIcon onClick={this.toggle} icon={faComment} />
                 <span className="tooltiptext">Comment</span>
               </span>
               {`${commentCount} comments`}
             </span>
           </div>
+          {this.state.modal && <MessageModal 
+            toggle={this.toggle} 
+            modalState={this.state.modal} 
+            messageId={messageId} 
+            userId={userId}
+            authenticated={authenticated}
+            likedMessage={likedMessage}
+            likeMessage={likeMessage}
+            unlikeMessage={unlikeMessage}
+            profileImage={profileImage}
+            username={username}
+          />}
         </li>
       </div>
     );

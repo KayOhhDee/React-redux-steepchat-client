@@ -43,6 +43,8 @@ class MessageList extends Component {
           key={item._id}
           date={item.createdAt}
           text={item.text}
+          messageId={item._id}
+          userId={item.user._id}
           username={item.user.username}
           profileImage={item.user.profileImage}
           likeCount={item.likeCount}

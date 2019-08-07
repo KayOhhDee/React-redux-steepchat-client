@@ -10,7 +10,7 @@ import {
 
 const DEFAULT_STATE = {
   messages: [],
-  message: [],
+  message: { user: { } },
   loading: false
 }
 
@@ -21,6 +21,11 @@ export default (state= DEFAULT_STATE, action) => {
         ...state,
         messages: action.messages,
         loading: false
+      }
+    case LOAD_MESSAGE: 
+      return {
+        ...state,
+        message: action.message
       }
     case LOADING_DATA:
       return {
@@ -44,6 +49,9 @@ export default (state= DEFAULT_STATE, action) => {
     case UNLIKE_MESSAGE:
       let idx = state.messages.findIndex(message => message._id === action.message._id)
       state.messages[idx] = action.message
+      if(state.message._id === action.message._id) {
+        state.message = action.message
+      }
       return {
         ...state
       }
