@@ -32,7 +32,7 @@ class MessageForm extends Component {
     e.preventDefault();
     this.props.postNewMessage(this.state.message);
     this.setState({ message:'' });
-    this.props.errors.message && this.toggle();
+    this.state.message && this.toggle();
   }
 
   toggle = () => {
@@ -76,6 +76,7 @@ class MessageForm extends Component {
                   value={this.state.message}
                   name="message"
                   rows="6"
+                  required
                 />
               </FormGroup>
             </Form>

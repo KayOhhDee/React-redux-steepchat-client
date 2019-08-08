@@ -87,7 +87,7 @@ class MessageItem extends Component {
             <div className="message-area">
               <Link to="/">@{username}</Link>
               <p className="text-muted">
-                <Moment className="text-muted" format="Do MMM YYYY">
+                <Moment className="text-muted" fromNow>
                   {date}
                 </Moment>
               </p>

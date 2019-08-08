@@ -10,7 +10,7 @@ import {
 
 const DEFAULT_STATE = {
   messages: [],
-  message: { user: { } },
+  message: { user: { }, comments:[ ] },
   loading: false
 }
 

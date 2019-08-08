@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 import { fetchMessage } from "../store/actions/messages";
+import Comments from './Comments';
+import CommentForm from './CommentForm';
 import { Link } from "react-router-dom";
 import DefaultUserImg from "../images/user.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -31,6 +33,8 @@ class MessageModal extends Component {
         commentCount,
         text,
         createdAt,
+        comments,
+        _id,
         user: { username, profileImage }
       }
     } = this.props;
@@ -39,12 +43,15 @@ class MessageModal extends Component {
       <div>
         <Modal toggle={toggle} isOpen={modalState}>
           <ModalBody style={{ padding: "0" }}>
-            <li className="list-group-item">
+            <li
+              style={{ borderBottom: "none" }}
+              className="list-group-item"
+            >
               <button
                 type="button"
                 className="close"
                 aria-label="Close"
-                style={{ color: "black" }}
+                style={{ color: "black", outline: "none" }}
                 onClick={toggle}
               >
                 <span aria-hidden="true">×</span>
@@ -60,7 +67,7 @@ class MessageModal extends Component {
                 <div className="message-area">
                   <Link to="/">@{username}</Link>
                   <p className="text-muted">
-                    <Moment className="text-muted" format="Do MMM YYYY">
+                    <Moment className="text-muted" fromNow>
                       {createdAt}
                     </Moment>
                   </p>
@@ -110,6 +117,17 @@ class MessageModal extends Component {
                 </span>
               </div>
             </li>
+            {comments.length >= 1 && (
+              <hr
+                style={{
+                  marginBottom: "5px",
+                  marginTop: "5px",
+                  border: "2px solid rgba(0,0,0,.2)"
+                }}
+              />
+            )}
+            <CommentForm messageId={_id} />
+            <Comments comments={comments} />
           </ModalBody>
         </Modal>
       </div>
