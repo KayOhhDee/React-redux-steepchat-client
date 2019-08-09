@@ -7,7 +7,8 @@ import {
   LIKE_MESSAGE,
   UNLIKE_MESSAGE,
   POST_MESSAGE,
-  LOADING_DATA
+  LOADING_DATA,
+  POST_COMMENT
 } from "../actionTypes";
 
 const loadMessages = messages => ({
@@ -39,6 +40,11 @@ const unlike = message => ({
   type: UNLIKE_MESSAGE,
   message
 });
+
+const comment = data => ({
+  type: POST_COMMENT,
+  data
+})
 
 export const fetchMessages = () => {
   return dispatch => {
@@ -90,3 +96,11 @@ export const unlikeMessage = message_id => (dispatch, getState) => {
     .then(message => dispatch(unlike(message)))
     .catch(err => dispatch(addError(err.message)));
 };
+
+export const postComment = (message_id, text) => (dispatch, getState) => {
+  let { currentUser } = getState();
+  const id = currentUser.user._id;
+  return apiCall("post", `/api/users/${id}/messages/${message_id}/comment`, text)
+    .then(data => dispatch(comment(data)))
+    .catch(err => dispatch(addError(err.message)));
+}

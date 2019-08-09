@@ -54,7 +54,7 @@ class Comments extends Component {
                   style={{
                     marginBottom: "5px",
                     marginTop: "5px",
-                    borderTop: "1.4px solid rgba(0,0,0,.2)"
+                    borderTop: "1px solid rgba(0,0,0,.2)"
                   }}
                 />
               )}

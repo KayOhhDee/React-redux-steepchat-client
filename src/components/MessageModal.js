@@ -117,16 +117,23 @@ class MessageModal extends Component {
                 </span>
               </div>
             </li>
-            {comments.length >= 1 && (
               <hr
                 style={{
-                  marginBottom: "5px",
+                  marginBottom: "0",
                   marginTop: "5px",
                   border: "2px solid rgba(0,0,0,.2)"
                 }}
               />
-            )}
             <CommentForm messageId={_id} />
+            {comments.length >= 1 && (
+              <hr
+                style={{
+                  marginBottom: "5px",
+                  marginTop: "0",
+                  border: "2px solid rgba(0,0,0,.2)"
+                }}
+              />
+            )}
             <Comments comments={comments} />
           </ModalBody>
         </Modal>

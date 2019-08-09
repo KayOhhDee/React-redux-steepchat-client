@@ -5,7 +5,8 @@ import {
   LOADING_DATA,
   POST_MESSAGE, 
   LIKE_MESSAGE, 
-  UNLIKE_MESSAGE 
+  UNLIKE_MESSAGE, 
+  POST_COMMENT
   } from '../actionTypes';
 
 const DEFAULT_STATE = {
@@ -54,6 +55,14 @@ export default (state= DEFAULT_STATE, action) => {
       }
       return {
         ...state
+      }
+    case POST_COMMENT:
+      return {
+        ...state,
+        message: {
+          ...state.message,
+          comments: [action.data, ...state.message.comments]
+        }
       }
     default:
       return state;

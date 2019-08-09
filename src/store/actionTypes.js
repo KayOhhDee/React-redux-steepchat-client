@@ -9,3 +9,4 @@ export const LOADING_USER = 'LOADING_USER';
 export const LOADING_DATA = 'LOADING_DATA';
 export const LIKE_MESSAGE = 'LIKE_MESSAGE';
 export const UNLIKE_MESSAGE = 'UNLIKE_MESSAGE';
+export const POST_COMMENT = 'POST_COMMENT';

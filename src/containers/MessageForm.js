@@ -76,7 +76,6 @@ class MessageForm extends Component {
                   value={this.state.message}
                   name="message"
                   rows="6"
-                  required
                 />
               </FormGroup>
             </Form>
