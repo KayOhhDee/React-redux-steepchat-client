@@ -9,16 +9,21 @@ import { Container, Row } from "reactstrap";
 class User extends Component {
   state = {
     profile: null,
-    noPost : false
+    noPost : false,
+    messageParam: null
   };
 
   userInfo = {};
 
   componentDidMount() {
-    const handle = this.props.match.params.id;
-    this.props.getUserData(handle);
+    const userId = this.props.match.params.id;
+    const messageId = this.props.match.params.messageId;
+    
+    if(messageId) this.setState({messageParam: messageId})
+
+    this.props.getUserData(userId);
     axios
-      .get(`/api/users/${handle}`)
+      .get(`/api/users/${userId}`)
       .then(data =>
         this.setState({
           profile: data,
@@ -30,10 +35,10 @@ class User extends Component {
 
   componentDidUpdate(prevProps) {
     if(prevProps.match.params.id !== this.props.match.params.id){
-      const handle = this.props.match.params.id;
-      this.props.getUserData(handle);
+      const userId = this.props.match.params.id;
+      this.props.getUserData(userId);
       axios
-        .get(`/api/users/${handle}`)
+        .get(`/api/users/${userId}`)
         .then(data =>
           this.setState({
             profile: data
@@ -46,12 +51,13 @@ class User extends Component {
 
   render() {
     const { messages } = this.props.messages;
-    const messagesCollection =
-      !messages.length ? (
-        this.state.noPost && <p>No post from this user</p>
-      ) : (
-        <MessageList usermessages={messages} />
-      );
+    const messagesCollection = !messages.length ? (
+      this.state.noPost && <p>No post from this user</p>
+    ) : !this.state.messageParam ? (
+      <MessageList usermessages={messages} />
+    ) : (
+      <MessageList messageParam={this.state.messageParam} usermessages={messages} />
+    );
 
     if(this.state.profile !== null && this.state.profile !== undefined) {
       this.userInfo = this.state.profile.data;

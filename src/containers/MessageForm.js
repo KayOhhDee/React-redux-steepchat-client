@@ -46,7 +46,7 @@ class MessageForm extends Component {
     return (
       <div>
         <div id="NewMessage">
-          <Link onClick={this.toggle}>
+          <Link to="/" onClick={this.toggle}>
             <FontAwesomeIcon icon={faPlus} />
           </Link>
           <UncontrolledTooltip placement="top" target="NewMessage">

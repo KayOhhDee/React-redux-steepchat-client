@@ -49,6 +49,7 @@ const Main = props => {
           }}
         />
         <Route exact path="/users/:id" component={User} />
+        <Route exact path="/users/:id/message/:messageId" component={User} />
         <Route path="/" component={withAuth(MessageForm)} />
       </Switch>
     </div>

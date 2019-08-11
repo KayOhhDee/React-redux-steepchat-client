@@ -18,22 +18,43 @@ class MessageItem extends Component {
 
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
-    this.toggle = this.toggle.bind(this)
+    this.toggle = this.toggle.bind(this);
 
     this.myRef = React.createRef();
 
     this.state = {
       popupVisible: false,
-      modal: false
+      modal: false,
+      oldPath: '',
+      newPath: ''
     };
   }
 
+  componentDidMount() {
+    if(this.props.openModal) {
+      this.toggle();
+    }
+  }
+
   toggle() {
+    let oldPath = window.location.pathname;
+
+    const {userId, messageId} = this.props;
+    const newPath = `/users/${userId}/message/${messageId}`;
+
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
+    
+    if(this.state.modal !== true) {
+      if(oldPath === newPath) oldPath = `/users/${userId}`;
+      window.history.pushState(null, null, newPath);
+      this.setState({oldPath, newPath})
+    } else {
+      window.history.pushState(null, null, this.state.oldPath);
+    }
   }
-  
+
   handleDeleteClick() {
     if (!this.state.popupVisible) {
       document.addEventListener("click", this.handleOutsideClick, false);

@@ -64,7 +64,7 @@ class MessageModal extends Component {
                   className="timeline-image"
                 />
                 <div className="message-area">
-                  <Link to="/">@{username}</Link>
+                  <Link to={`/users/${this.props.message.user._id}`}>@{username}</Link>
                   <p className="text-muted">
                     <Moment className="text-muted" fromNow>
                       {createdAt}
