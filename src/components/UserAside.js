@@ -12,8 +12,12 @@ import { faMapMarkerAlt, faLink, faCalendar, faPen } from "@fortawesome/free-sol
 
 class UserAside extends Component {
   componentDidMount() {
-    this.props.getUserInfo();
+    this.props.getUserInfo() 
   }
+
+  userDetails = {}
+
+  loadingUser = false;
 
   handleFileUpload = ({ target }) => {
     const image = target.files[0];
@@ -27,42 +31,75 @@ class UserAside extends Component {
     let fileInput = document.getElementById("fileInput");
     fileInput.click();
   };
+
   render() {
-    const { currentUser: { user: {profileImage,
+    if(this.props.userDetails !== undefined) {
+      this.userDetails = {
+        bio: this.props.userDetails.bio,
+        profileImage: this.props.userDetails.profileImage,
+        username: this.props.userDetails.username,
+        website: this.props.userDetails.website,
+        location: this.props.userDetails.location,
+        createdAt: this.props.userDetails.createdAt,
+        _id: this.props.userDetails._id
+      }
+
+      this.loadingUser = !!Object.entries(this.props.userDetails).length;
+    } 
+
+   const { currentUser: { user: { profileImage,
       username, bio,
       website,
       location,
-      createdAt},
+      createdAt,
+      _id },
       loading,
-      isAuthenticated,
-     
+      isAuthenticated,     
     }} = this.props;
     return (
       <Col xl={{ size: 3, offset: 1 }}>
         <aside>
-          {!loading ? (
+          {(this.props.userDetails ? (
+            this.loadingUser
+          ) : (
+            !loading
+          )) ? (
             isAuthenticated ? (
               <div className="card">
                 <div className="view">
                   <img
-                    src={profileImage || DefaultUserImg}
+                    src={
+                      this.loadingUser
+                        ? this.userDetails.profileImage
+                          ? this.userDetails.profileImage
+                          : DefaultUserImg
+                        : profileImage || DefaultUserImg
+                    }
                     alt={username}
                     className="card-image"
                     width="160"
                     height="150"
                   />
-                  <Link to="/">
-                    <span
-                      id="editImage"
-                      onClick={this.handleEditImage}
-                      className="img-edit"
-                    >
-                      <FontAwesomeIcon icon={faPen} />
-                    </span>
-                  </Link>
-                  <UncontrolledTooltip placement="top" target="editImage">
-                    Edit Profile Image
-                  </UncontrolledTooltip>
+                  {(_id === this.userDetails._id ||
+                    this.userDetails._id === undefined) && (
+                    <div>
+                      <Link to="/">
+                        <span
+                          id="editImage"
+                          onClick={this.handleEditImage}
+                          className="img-edit"
+                        >
+                          <FontAwesomeIcon icon={faPen} />
+                        </span>
+                      </Link>
+                      <UncontrolledTooltip
+                        placement="top"
+                        target="editImage"
+                      >
+                        Edit Profile Image
+                      </UncontrolledTooltip>
+                    </div>
+                  )}
                   <input
                     id="fileInput"
                     type="file"
@@ -71,25 +108,53 @@ class UserAside extends Component {
                 </div>
                 <div className="card-body">
                   <h4 className="card-body-username">
-                    <Link to="/">@{username}</Link>
+                    <Link to={`/users/${this.userDetails._id || _id}`}>
+                      @{this.userDetails.username || username}
+                    </Link>
                   </h4>
-                  {bio && <p className="card-body-bio">{bio}</p>}
-                  {location && (
-                    <p className="card-body-location">
-                      <FontAwesomeIcon icon={faMapMarkerAlt} /> {location}
+                  {(this.loadingUser
+                    ? this.userDetails.bio
+                      ? this.userDetails.bio
+                      : null
+                    : bio) && (
+                    <p className="card-body-bio">
+                      {this.userDetails.bio || bio}
                     </p>
                   )}
-                  {website && (
+                  {(this.loadingUser
+                    ? this.userDetails.location
+                      ? this.userDetails.location
+                      : null
+                    : location) && (
+                    <p className="card-body-location">
+                      <FontAwesomeIcon icon={faMapMarkerAlt} />{" "}
+                      {this.userDetails.location || location}
+                    </p>
+                  )}
+                  {(this.loadingUser
+                    ? this.userDetails.website
+                      ? this.userDetails.website
+                      : null
+                    : website) && (
                     <p className="card-body-web">
                       <FontAwesomeIcon icon={faLink} />{" "}
-                      <a rel="noopener noreferrer" target="_blank" href={website}>{website}</a>
+                      <a
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        href={this.userDetails.website || website}
+                      >
+                        {this.userDetails.website || website}
+                      </a>
                     </p>
                   )}
-                  <EditInfo />
+                  {(_id === this.userDetails._id ||
+                    this.userDetails._id === undefined) && <EditInfo />}
                 </div>
                 <div className="card-footer">
                   <FontAwesomeIcon icon={faCalendar} /> Joined{" "}
-                  <Moment format="Do MMM YYYY">{createdAt}</Moment>
+                  <Moment format="Do MMM YYYY">
+                    {this.userDetails.createdAt || createdAt}
+                  </Moment>
                 </div>
               </div>
             ) : (

@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import DefaultUserImg from "../images/user.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  Button,
   Modal,
   ModalBody,
 } from "reactstrap";

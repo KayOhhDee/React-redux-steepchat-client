@@ -74,7 +74,7 @@ class MessageItem extends Component {
     } = this.props;
 
     return (
-      <div >
+      <div>
         <li className="list-group-item">
           <div className="list-item-info">
             <img
@@ -85,7 +85,7 @@ class MessageItem extends Component {
               className="timeline-image"
             />
             <div className="message-area">
-              <Link to="/">@{username}</Link>
+              <Link to={`/users/${userId}`}>@{username}</Link>
               <p className="text-muted">
                 <Moment className="text-muted" fromNow>
                   {date}
@@ -146,18 +146,20 @@ class MessageItem extends Component {
               {`${commentCount} comments`}
             </span>
           </div>
-          {this.state.modal && <MessageModal 
-            toggle={this.toggle} 
-            modalState={this.state.modal} 
-            messageId={messageId} 
-            userId={userId}
-            authenticated={authenticated}
-            likedMessage={likedMessage}
-            likeMessage={likeMessage}
-            unlikeMessage={unlikeMessage}
-            profileImage={profileImage}
-            username={username}
-          />}
+          {this.state.modal && (
+            <MessageModal
+              toggle={this.toggle}
+              modalState={this.state.modal}
+              messageId={messageId}
+              userId={userId}
+              authenticated={authenticated}
+              likedMessage={likedMessage}
+              likeMessage={likeMessage}
+              unlikeMessage={unlikeMessage}
+              profileImage={profileImage}
+              username={username}
+            />
+          )}
         </li>
       </div>
     );

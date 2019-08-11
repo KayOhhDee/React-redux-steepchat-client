@@ -27,7 +27,7 @@ class Comments extends Component {
                     className="timeline-image"
                   />
                   <div className="message-area">
-                    <Link to={`users/${_id}`}>@{username}</Link>{" "}
+                    <Link to={`/users/${_id}`}>@{username}</Link>{" "}
                     <span>
                       <FontAwesomeIcon
                         style={{

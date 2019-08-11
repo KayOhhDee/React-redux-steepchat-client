@@ -11,7 +11,7 @@ import { Col } from "reactstrap";
 
 class MessageList extends Component {
   componentDidMount() {
-    this.props.fetchMessages();
+    !this.props.usermessages && this.props.fetchMessages();
   }
 
   removeMessage = (user_id, message_id) => {
@@ -36,9 +36,9 @@ class MessageList extends Component {
   }
 
   render() {
-    const { messages, currentUser, loading } = this.props;
+    const { messages, usermessages, currentUser, loading } = this.props;
     let messageList = !loading ? (
-      messages.map(item => (
+      usermessages ? (usermessages.map(item => (
         <MessageItem
           key={item._id}
           date={item.createdAt}
@@ -56,7 +56,25 @@ class MessageList extends Component {
           isCorrectUser={currentUser.user._id === item.user._id}
           authenticated={currentUser.isAuthenticated}
         />
-      ))
+      ))) : (messages.map(item => (
+        <MessageItem
+          key={item._id}
+          date={item.createdAt}
+          text={item.text}
+          messageId={item._id}
+          userId={item.user._id}
+          username={item.user.username}
+          profileImage={item.user.profileImage}
+          likeCount={item.likeCount}
+          commentCount={item.commentCount}
+          removeMessage={this.removeMessage.bind(this, item.user._id, item._id)}
+          likedMessage={this.likedMessage.bind(this, item._id)}
+          likeMessage={this.likeMessage.bind(this, item._id)}
+          unlikeMessage={this.unlikeMessage.bind(this, item._id)}
+          isCorrectUser={currentUser.user._id === item.user._id}
+          authenticated={currentUser.isAuthenticated}
+        />
+      )))
     ) : (
       <p>loading...</p>
     );

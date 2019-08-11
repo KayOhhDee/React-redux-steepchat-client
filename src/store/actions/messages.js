@@ -11,7 +11,7 @@ import {
   POST_COMMENT
 } from "../actionTypes";
 
-const loadMessages = messages => ({
+export const loadMessages = messages => ({
   type: LOAD_MESSAGES,
   messages
 });
