@@ -4,6 +4,7 @@ import { uploadRequest, getUserInfo } from "../store/actions/user";
 import DefaultUserImg from '../images/user.png';
 import { Link } from "react-router-dom";
 import EditInfo from './EditInfo';
+import LoadingProfile from './LoadingProfile';
 import Moment from "react-moment";
 import { UncontrolledTooltip, Col, Button} from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -180,7 +181,7 @@ class UserAside extends Component {
               </div>
             )
           ) : (
-            <p>loading...</p>
+            <LoadingProfile />
           )}
         </aside>
       </Col>
