@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import MessageForm from './MessageForm'
+import MessageForm from './MessageForm';
+import Notifications from './Notifications';
 import { logout } from '../store/actions/auth';
 import {
   Navbar,
@@ -17,7 +18,7 @@ import {
   Container, Row, Col 
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserCircle, faHome, faBell } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle, faHome } from "@fortawesome/free-solid-svg-icons";
 
 class NavBar extends Component {
   logout = e => {
@@ -85,13 +86,7 @@ class NavBar extends Component {
                 </UncontrolledTooltip>
               </Col>
               <Col>
-                <Link id="notifications" to={`/users/${this.props.currentUser.user.id}/messages/new`}>
-                  <FontAwesomeIcon icon={faBell} />
-                  <UncontrolledTooltip placement="top" target="notifications">
-                    Notifications
-                  </UncontrolledTooltip>
-                </Link>
-                <span className="counter">22</span>
+                <Notifications />
               </Col>
             </Row>
           </Container>

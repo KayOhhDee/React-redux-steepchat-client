@@ -485,3 +485,23 @@ nav {
 #fileInput {
   display: none;
 }
+
+/* Notifications dropdown */
+
+#notifications-dropdown {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border-color: transparent;
+  outline: none;
+  box-shadow: none;
+}
+
+#notifications-dropdown:focus {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border-color: transparent;
+  outline: none;
+  box-shadow: none;
+}

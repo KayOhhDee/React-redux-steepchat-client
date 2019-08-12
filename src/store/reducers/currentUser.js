@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER, LOADING_USER, LIKE_MESSAGE, UNLIKE_MESSAGE  } from '../actionTypes';
+import { SET_CURRENT_USER, LOADING_USER, LIKE_MESSAGE, UNLIKE_MESSAGE, READ_NOTIFICATIIONS  } from '../actionTypes';
 
 const DEFAULT_STATE = {
   isAuthenticated: false,
@@ -41,6 +41,11 @@ export default (state = DEFAULT_STATE, action) => {
           likes: state.user.likes.filter(l => l.message !== action.message._id)
         }
       };
+    case READ_NOTIFICATIIONS:
+      state.user.notifications.forEach( n => n.read = true)
+      return {
+        ...state
+      }
     default:
       return state;
   }

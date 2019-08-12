@@ -7,6 +7,7 @@ import {
   unlikeMessage
 } from "../store/actions/messages";
 import MessageItem from "../components/messageItem";
+import LoadingMessage from "../components/LoadingMessage";
 import { Col } from "reactstrap";
 
 class MessageList extends Component {
@@ -95,7 +96,7 @@ class MessageList extends Component {
         />
       )))
     ) : (
-      <p>loading...</p>
+      <LoadingMessage />
     );
     return (
       <Col className="messageList" xl="7">

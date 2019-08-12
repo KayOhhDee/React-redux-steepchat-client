@@ -2,7 +2,7 @@ import { apiCall } from "../../services/api";
 import { addError } from "./error";
 import { setCurrentUser } from "./auth";
 import { loadMessages } from "./messages";
-import { LOADING_USER, LOADING_DATA } from "../actionTypes";
+import { LOADING_USER, LOADING_DATA, READ_NOTIFICATIIONS } from "../actionTypes";
 
 
 export const getUserInfo = () => (dispatch, getState) => {
@@ -26,10 +26,9 @@ export const uploadRequest = ( data ) => (dispatch, getState) => {
 export const editUserInfo = (details) => (dispatch, getState) => {
   dispatch({ type: LOADING_USER });
   let { currentUser } = getState();
-  console.log(currentUser)
   const id = currentUser.user._id;
   return apiCall('put', `/api/user/${id}`, details)
-    .then(_ => {dispatch(getUserInfo())})
+    .then( _ => {dispatch(getUserInfo())})
     .catch(error => dispatch(addError(error)))
 } 
 
@@ -41,4 +40,12 @@ export const getUserData = user_id => dispatch => {
       dispatch(getUserInfo());
     })
     .catch(err => dispatch(addError(err)))
+}
+
+export const readNotifications = notifications => (dispatch, getState) => {
+  let { currentUser } = getState();
+  const id = currentUser.user._id;
+  return apiCall("post", `/api/user/${id}/notifications`, notifications)
+    .then( _ => dispatch({ type: READ_NOTIFICATIIONS }))
+    .catch(err => dispatch(addError(err)));
 }
