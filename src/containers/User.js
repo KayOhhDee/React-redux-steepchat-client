@@ -65,7 +65,7 @@ class User extends Component {
     
     return (
       <Container>
-        <Row>
+        <Row style={{marginTop:"2rem"}}>
           <UserAside userDetails={this.userInfo} />
           {messagesCollection}
         </Row>

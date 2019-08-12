@@ -58,7 +58,7 @@ class UserAside extends Component {
       isAuthenticated,     
     }} = this.props;
     return (
-      <Col xl={{ size: 3, offset: 1 }}>
+      <Col xl={{ size: 3, offset: 1 }} >
         <aside>
           {(this.props.userDetails ? (
             this.loadingUser

@@ -10,6 +10,7 @@ import {
   faHeart as faHeartSolid
 } from "@fortawesome/free-solid-svg-icons";
 import { faComment, faHeart, faEye } from "@fortawesome/free-regular-svg-icons";
+import Fade from 'react-reveal/Fade';
 
 
 class MessageItem extends Component {
@@ -95,7 +96,7 @@ class MessageItem extends Component {
     } = this.props;
 
     return (
-      <div>
+      <Fade>
         <li className="list-group-item">
           <div className="list-item-info">
             <img
@@ -182,7 +183,7 @@ class MessageItem extends Component {
             />
           )}
         </li>
-      </div>
+      </Fade>
     );
   }
 }
