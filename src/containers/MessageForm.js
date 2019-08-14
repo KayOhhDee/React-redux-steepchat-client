@@ -81,7 +81,7 @@ class MessageForm extends Component {
             </Form>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.handleSubmit}>
+            <Button className="btn-style" style={{backgroundColor:"#8E54E9"}} onClick={this.handleSubmit}>
               Post
             </Button>
           </ModalFooter>

@@ -97,7 +97,7 @@ class MessageItem extends Component {
 
     return (
       <Fade>
-        <li className="list-group-item">
+        <li style={{wordBreak:"break-word"}}className="list-group-item">
           <div className="list-item-info">
             <img
               src={profileImage || DefaultUserImg}
@@ -126,9 +126,8 @@ class MessageItem extends Component {
                 )}
               </div>
             )}
-            <span className="view-btn tooltipper">
+            <span title="view" className="view-btn tooltipper">
               <FontAwesomeIcon onClick={this.toggle} icon={faEye} />
-              <span className="tooltiptext">View</span>
             </span>
           </div>
           <div>
@@ -138,32 +137,28 @@ class MessageItem extends Component {
             <span>
               {!authenticated ? (
                 <Link to="/signin">
-                  <span className="tooltipper">
+                  <span title="Like" className="tooltipper">
                     <FontAwesomeIcon icon={faHeart} />
-                    <span className="tooltiptext">Like</span>
                   </span>
                 </Link>
               ) : likedMessage() ? (
-                <span className="tooltipper">
+                <span title="Unlike" className="tooltipper">
                   <FontAwesomeIcon
                     data-heartsolid
                     onClick={unlikeMessage}
                     icon={faHeartSolid}
                   />
-                  <span className="tooltiptext">Unlike</span>
                 </span>
               ) : (
-                <span className="tooltipper">
+                <span title="Like" className="tooltipper">
                   <FontAwesomeIcon onClick={likeMessage} icon={faHeart} />
-                  <span className="tooltiptext">Like</span>
                 </span>
               )}
               {`${likeCount} likes`}
             </span>
             <span>
-              <span className="tooltipper">
+              <span title="Comment" className="tooltipper">
                 <FontAwesomeIcon onClick={this.toggle} icon={faComment} />
-                <span className="tooltiptext">Comment</span>
               </span>
               {`${commentCount} comments`}
             </span>

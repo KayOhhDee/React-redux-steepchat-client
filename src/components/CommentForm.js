@@ -38,7 +38,7 @@ class CommentForm extends Component {
                 style={{width:"98%", borderRadius:"1rem", overflow:"hidden"}}
               />
             </FormGroup>
-            <Button type="submit" outline color="primary">
+            <Button className="btn-style-comment" type="submit" outline>
               Post
             </Button>
           </Form>

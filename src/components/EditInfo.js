@@ -63,9 +63,10 @@ class EditInfo extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{height:"50px"}}>
         <span className="card-body-edit">
-          <FontAwesomeIcon onClick={this.toggle} id="editInfo" icon={faPen} />
+          <div className="card-info-ico-hover" id="editInfo"  onClick={this.toggle} />
+          <FontAwesomeIcon onClick={this.toggle} icon={faPen} />
           <UncontrolledTooltip placement="top" target="editInfo">
             Edit Info
           </UncontrolledTooltip>
@@ -115,10 +116,10 @@ class EditInfo extends Component {
             </Form>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.handleSubmit}>
+            <Button className="btn-style" style={{backgroundColor:"#8E54E9"}} onClick={this.handleSubmit}>
               Save
             </Button>{" "}
-            <Button color="secondary" onClick={this.toggle}>
+            <Button className="btn-style" color="secondary" onClick={this.toggle}>
               Cancel
             </Button>
           </ModalFooter>

@@ -9,8 +9,8 @@ import { Container, Row } from "reactstrap";
 class User extends Component {
   state = {
     profile: null,
-    noPost : false,
-    messageParam: null
+    noPost: false,
+    messageParam: null,
   };
 
   userInfo = {};
@@ -18,8 +18,10 @@ class User extends Component {
   componentDidMount() {
     const userId = this.props.match.params.id;
     const messageId = this.props.match.params.messageId;
-    
-    if(messageId) this.setState({messageParam: messageId})
+
+    if (messageId) this.setState({ messageParam: messageId });
+
+    this.setState({oldPath:`/users/${userId}`})
 
     this.props.getUserData(userId);
     axios
@@ -34,7 +36,7 @@ class User extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.match.params.id !== this.props.match.params.id){
+    if (prevProps.match.params.id !== this.props.match.params.id) {
       const userId = this.props.match.params.id;
       this.props.getUserData(userId);
       axios
@@ -47,7 +49,6 @@ class User extends Component {
         .catch(error => console.log(error));
     }
   }
-  
 
   render() {
     const { messages } = this.props.messages;
@@ -56,16 +57,19 @@ class User extends Component {
     ) : !this.state.messageParam ? (
       <MessageList usermessages={messages} />
     ) : (
-      <MessageList messageParam={this.state.messageParam} usermessages={messages} />
+      <MessageList
+        messageParam={this.state.messageParam}
+        usermessages={messages}
+      />
     );
 
-    if(this.state.profile !== null && this.state.profile !== undefined) {
+    if (this.state.profile !== null && this.state.profile !== undefined) {
       this.userInfo = this.state.profile.data;
     }
-    
+
     return (
       <Container>
-        <Row style={{marginTop:"2rem"}}>
+        <Row style={{ marginTop: "2rem" }}>
           <UserAside userDetails={this.userInfo} />
           {messagesCollection}
         </Row>

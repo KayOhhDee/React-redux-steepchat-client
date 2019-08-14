@@ -26,8 +26,8 @@ class DeleteMessage extends Component {
             {"Are you sure you want to delete this post?"}
           </ModalBody>
           <ModalFooter>
-            <Button color="danger" onClick={this.handleDelete}>Delete</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+            <Button className="btn-style" color="danger" onClick={this.handleDelete}>Delete</Button>{' '}
+            <Button className="btn-style" color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
       </div>

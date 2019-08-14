@@ -231,19 +231,54 @@ nav {
   cursor: pointer;
 }
 
-.btn.btn-success {
-  padding: 0.4rem 0.9rem !important;
+.btn-style {
   text-decoration: none;
   letter-spacing: .055rem;
   color: #fff;
   border: 2px solid transparent;
   border-radius: 0 !important;
   outline: none !important;
-  font-size: 1rem;
   font-weight: 300;
   box-shadow: 0 0 8px #66757f;
-  margin-top: 1.2rem;
 }
+
+.btn-style:hover {
+  border: 2px solid transparent;
+  outline: none !important;
+}
+
+.btn-style:active {
+  border: 2px solid transparent !important;
+  outline: none !important;
+}
+
+.btn-style:focus {
+  box-shadow: 0 0 8px #66757f !important;
+}
+
+.btn-style-comment {
+  color: #8E54E9;
+  border: 1px solid #8E54E9;
+}
+
+.btn-style-comment:focus {
+  box-shadow: none;
+}
+
+.btn-style-comment:hover {
+  background: none;
+  color: #8E54E9;
+  border: 1px solid #8E54E9;
+}
+
+.btn-style-comment:active {
+  box-shadow: none !important;
+  outline: none;
+  background: none !important;
+  color: #8E54E9 !important;
+  border: 1px solid #8E54E9 !important;
+}
+
 
 
 /* Card */
@@ -268,6 +303,7 @@ nav {
   .card {
     width: 247.5px !important;
     margin: 0 auto;
+    /* display: none; */
   }
 }
 
@@ -350,9 +386,25 @@ nav {
   background-color: #8E54E9;
 }
 
+.card-body-edit {
+  cursor: pointer;
+}
+
+.card-info-ico-hover {
+  position: relative;
+  left: 172px;
+  background-color: rgba(142, 84, 233, .3);
+  cursor: pointer;
+  height: 35px;
+  top: 14px;
+  border-radius: 50%;
+  width: 35px;
+}
+
 .card-body-edit > svg.svg-inline--fa{
   position: relative;
   left: 87px;
+  top: -25px;
   width: 8% !important;
   color: #8E54E9 !important;
   font-size: 18px;
@@ -421,65 +473,6 @@ nav {
   box-shadow: 0 0 8px #66757f;
 }
 
-
-/* Tooltip */
-
-.tooltipper .tooltiptext {
-  visibility: hidden;
-  width: auto;
-  background-color: rgba(0, 0, 0, .9);
-  color: #fff;
-  text-align: center;
-  border-radius: 4px;
-  padding: 3px 10px;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  opacity: 0;
-  transition: opacity 0.7s;
-  font-size: .785rem;
-}
-
-.view-btn.tooltipper .tooltiptext {
-  margin-left: -120%;
-}
-
-.delete-btn.tooltipper .tooltiptext {
-  margin-left: -180%;
-}
-
-.tooltipper [data-heartsolid] + .tooltiptext {
-  margin-left: -90% !important;
-  bottom: 170%;
-}
-
-.tooltipper [data-icon="heart"] + .tooltiptext {
-  margin-left: -70%;
-  bottom: 170%;
-}
-
-.tooltipper [data-icon="comment"] + .tooltiptext {
-  margin-left: -128%;
-  bottom: 170%;
-}
-
-.tooltipper .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, .9) transparent transparent transparent;
-}
-
-.tooltipper:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-
 /* Image Edit Button */
 
 #fileInput {
@@ -504,4 +497,10 @@ nav {
   border-color: transparent;
   outline: none;
   box-shadow: none;
+}
+
+/* Bootstrap close ico */
+
+button.close {
+  outline: none !important;
 }
