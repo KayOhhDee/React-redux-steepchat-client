@@ -12,12 +12,23 @@ import {faHeart as faHeartSolid} from "@fortawesome/free-solid-svg-icons";
 import { faComment, faHeart} from "@fortawesome/free-regular-svg-icons";
 
 class MessageModal extends Component {
-  state = {
-    date: ''
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      date: null ? undefined : this.props.message.createdAt
+    };
+
+    this.loading = null
   }
+  
   componentDidMount() {
-    this.props.fetchMessage(this.props.userId, this.props.messageId);
-    this.setState({date: this.props.message.createdAt})
+    this.props.fetchMessage(this.props.userId, this.props.messageId); 
+    this.setState({ date: undefined });
+  }
+  
+  componentDidUpdate(prevProps, prevState) {
+    this.loading = prevState.date === this.props.message.createdAt;
   }
   
 
@@ -44,12 +55,13 @@ class MessageModal extends Component {
       <div>
         <Modal toggle={toggle} isOpen={modalState}>
           <ModalBody style={{ padding: "0" }}>
-            {this.state.date === this.props.message.createdAt ? (
+            { !this.loading ? (
               <Spinner
                 style={{
                   width: "4rem",
                   height: "4rem",
-                  margin: "5rem 14rem",
+                  margin: "5rem auto",
+                  display: "block",
                   color: "#8E54E9"
                 }}
                 type="grow"
