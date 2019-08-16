@@ -8,6 +8,7 @@ import { removeError } from '../store/actions/error';
 import withAuth from '../hocs/withAuth';
 import MessageForm from '../containers/MessageForm';
 import User from './User';
+import AuthUser from './AuthUser';
 
 const Main = props => {
   const {authUser, error, removeError, currentUser} = props
@@ -49,6 +50,7 @@ const Main = props => {
           }}
         />
         <Route exact path="/users/:id" component={User} />
+        <Route exact path="/user/profile" component={AuthUser} />
         <Route exact path="/users/:id/message/:messageId" component={User} />
         <Route path="/" component={withAuth(MessageForm)} />
       </Switch>

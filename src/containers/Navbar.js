@@ -42,11 +42,11 @@ class NavBar extends Component {
                       <DropdownToggle className="profileIco" nav caret>
                         <FontAwesomeIcon icon={faUserCircle} />
                       </DropdownToggle>
-                      <DropdownMenu right>
-                        <DropdownItem>
-                          <div onClick={this.logout}>Profile</div>
+                      <DropdownMenu right className="profile-menu">
+                        <DropdownItem className="profile">
+                          <Link style={{color: "black", fontWeight:"400"}} to={"/user/profile"}>Profile</Link>
                         </DropdownItem>
-                        <DropdownItem divider />
+                        <DropdownItem divider className="profile" />
                         <DropdownItem>
                           <div onClick={this.logout}>Log out</div>
                         </DropdownItem>

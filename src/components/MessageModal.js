@@ -16,7 +16,7 @@ class MessageModal extends Component {
     super(props)
 
     this.state = {
-      date: null ? undefined : this.props.message.createdAt
+      date: null ? undefined : this.props.message.createdAt,
     };
 
     this.loading = null
@@ -28,7 +28,9 @@ class MessageModal extends Component {
   }
   
   componentDidUpdate(prevProps, prevState) {
-    this.loading = prevState.date === this.props.message.createdAt;
+    if (prevState.date === this.props.message.createdAt) {
+      this.loading = prevState.date === this.props.message.createdAt;
+    }
   }
   
 
@@ -55,7 +57,7 @@ class MessageModal extends Component {
       <div>
         <Modal toggle={toggle} isOpen={modalState}>
           <ModalBody style={{ padding: "0" }}>
-            { !this.loading ? (
+            { (!this.loading) ? (
               <Spinner
                 style={{
                   width: "4rem",

@@ -56,9 +56,9 @@ class UserAside extends Component {
       _id },
       loading,
       isAuthenticated,     
-    }} = this.props;
+    }, showProfile } = this.props;
     return (
-      <Col xl={{ size: 3, offset: 1 }} >
+      <Col xl={{ size: 3, offset: 1 }}>
         <aside>
           {(this.props.userDetails ? (
             this.loadingUser
@@ -66,7 +66,8 @@ class UserAside extends Component {
             !loading
           )) ? (
             isAuthenticated ? (
-              <div className="card">
+              <div className={"card " + ((_id === this.userDetails._id ||
+                    this.userDetails._id === undefined) && !showProfile ? "hide-card":"show-card")}>
                 <div className="view">
                   <img
                     src={
@@ -84,15 +85,13 @@ class UserAside extends Component {
                   {(_id === this.userDetails._id ||
                     this.userDetails._id === undefined) && (
                     <div>
-                      <Link to="/">
-                        <span
-                          id="editImage"
-                          onClick={this.handleEditImage}
-                          className="img-edit"
-                        >
-                          <FontAwesomeIcon icon={faPen} />
-                        </span>
-                      </Link>
+                      <span
+                        id="editImage"
+                        onClick={this.handleEditImage}
+                        className="img-edit"
+                      >
+                        <FontAwesomeIcon icon={faPen} />
+                      </span>
                       <UncontrolledTooltip
                         placement="top"
                         target="editImage"
@@ -169,12 +168,12 @@ class UserAside extends Component {
                   No Profile Found, Please log in first
                 </h5>
                 <Link to="/signup" className="btn">
-                  <Button outline color="primary">
+                  <Button className="btn-style-comment" outline>
                     SignUp Now!
                   </Button>
                 </Link>
                 <Link to="/signin" className="btn">
-                  <Button outline color="primary">
+                  <Button className="btn-style-comment" outline>
                     SignIn
                   </Button>
                 </Link>

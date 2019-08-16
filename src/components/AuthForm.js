@@ -31,7 +31,7 @@ class AuthForm extends Component{
   }
 
   render() {
-    const { email, username, password, profileImage } = this.state
+    const { email, username, password } = this.state
     const { heading, buttonText, signup, err, removeError, history } = this.props;
 
     history.listen( _ => {
@@ -41,9 +41,9 @@ class AuthForm extends Component{
     return (
       <div className="row justify-content-md-center authColor">
         <div className="background-form" />
-        <div className="col-md-6">
+        <div className="col-md-6 col-lg-4">
           <form onSubmit={this.handleSubmit}>
-            <h2 className="text-center">{heading}</h2>
+            <h2 style={{margin:"2rem 0"}} className="text-center">{heading}</h2>
             {err.message && (
               <div className="alert alert-danger">{err.message}</div>
             )}
@@ -86,23 +86,13 @@ class AuthForm extends Component{
                     name="username"
                   />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="exampleInputPassword1">
-                    Profile Image:
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="exampleProfileImage1"
-                    placeholder="Enter Image URL"
-                    onChange={this.handleChange}
-                    value={profileImage}
-                    name="profileImage"
-                  />
-                </div>
               </div>
             )}
-            <button type="submit" className="btn btn-primary">
+            <button
+              style={{ width: "100%" }}
+              type="submit"
+              className="btn btn-primary"
+            >
               {buttonText}
             </button>
           </form>

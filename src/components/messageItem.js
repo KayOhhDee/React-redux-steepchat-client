@@ -97,7 +97,7 @@ class MessageItem extends Component {
 
     return (
       <Fade>
-        <li style={{wordBreak:"break-word"}}className="list-group-item">
+        <li style={{wordBreak:"break-word"}} className="list-group-item">
           <div className="list-item-info">
             <img
               src={profileImage || DefaultUserImg}
@@ -120,7 +120,7 @@ class MessageItem extends Component {
                   <FontAwesomeIcon icon={faEllipsisH} />
                 </span>
                 {this.state.popupVisible && (
-                  <div className="option-content">
+                  <div style={{wordBreak:"normal"}} className="option-content">
                     <DeleteMessage removeMessage={removeMessage} />
                   </div>
                 )}
