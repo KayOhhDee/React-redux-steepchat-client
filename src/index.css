@@ -4,9 +4,7 @@ body {
 
 /* Navbar */
 nav {
-  background-image: url('./images/ev.jpg');
-  background-size: 100% 100%;
-  width: 100%;
+  background: linear-gradient(to right, rgb(71, 118, 230), rgb(142, 84, 233));
 }
 
 .navbar a {
