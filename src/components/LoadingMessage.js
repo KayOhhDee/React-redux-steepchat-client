@@ -23,11 +23,11 @@ const LoadingMessage = () => {
         </div>
       </div>
       <div>
-        <p className="post">
+        <div className="post">
           <div style={{height: "15px", backgroundColor: "rgba(0, 0, 0, 0.6)", width: "90%", marginBottom: "10px"}} />
           <div style={{height: "15px", backgroundColor: "rgba(0, 0, 0, 0.6)", width: "90%", marginBottom: "10px"}} />
           <div style={{height: "15px", backgroundColor: "rgba(0, 0, 0, 0.6)", width: "50%", marginBottom: "10px"}} />
-        </p>
+        </div>
       </div>
     </li>
   ));

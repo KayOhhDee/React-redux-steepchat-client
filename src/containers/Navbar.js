@@ -6,7 +6,6 @@ import Notifications from './Notifications';
 import { logout } from '../store/actions/auth';
 import {
   Navbar,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -31,29 +30,28 @@ class NavBar extends Component {
       <div>
         <nav>
           <Navbar expand="xs">
-            <NavbarBrand>
-              <Link to="/">SteepChat</Link>
-            </NavbarBrand>
+            <Link className="brand-link" to="/">SteepChat</Link>
             {this.props.currentUser.isAuthenticated ? (
               <Nav className="ml-auto" navbar>
-                <NavItem>
-                  <NavLink className="profileIco">
-                    <UncontrolledDropdown nav inNavbar>
-                      <DropdownToggle className="profileIco" nav caret>
-                        <FontAwesomeIcon icon={faUserCircle} />
-                      </DropdownToggle>
-                      <DropdownMenu right className="profile-menu">
-                        <DropdownItem className="profile">
-                          <Link style={{color: "black", fontWeight:"400"}} to={"/user/profile"}>Profile</Link>
-                        </DropdownItem>
-                        <DropdownItem divider className="profile" />
-                        <DropdownItem>
-                          <div onClick={this.logout}>Log out</div>
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </UncontrolledDropdown>
-                  </NavLink>
-                </NavItem>
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle className="profileIco" nav caret>
+                    <FontAwesomeIcon icon={faUserCircle} />
+                  </DropdownToggle>
+                  <DropdownMenu right className="profile-menu">
+                    <DropdownItem className="profile">
+                      <Link className="profileIco"
+                        style={{ color: "black", fontWeight: "400" }}
+                        to={"/user/profile"}
+                      >
+                        Profile
+                      </Link>
+                    </DropdownItem>
+                    <DropdownItem divider className="profile" />
+                    <DropdownItem>
+                      <div onClick={this.logout}>Log out</div>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
               </Nav>
             ) : (
               <Nav className="ml-auto" navbar>
