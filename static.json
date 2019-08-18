@@ -5,7 +5,7 @@
   },
   "proxies": {
     "/api": {
-      "origin": "https://steepchat-api.kod3180.now.sh/api"
+      "origin": "https://steepchat-server-kod.herokuapp.com/api"
     }
   }
 }
