@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Spinner } from "reactstrap";
 
 class AuthForm extends Component{
   constructor(props) {
@@ -7,7 +8,8 @@ class AuthForm extends Component{
       email: '',
       username: '',
       password: '',
-      profileImage: ''
+      profileImage: '',
+      btnLoader: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,11 +23,15 @@ class AuthForm extends Component{
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({ btnLoader: true });
     const authType = this.props.signup ? 'signup' : 'signin';
     this.props.onAuth(authType, this.state).then(_ => {
       this.props.history.push('/')
     }) 
     .catch(() => {
+      if(this.props.err.message) {
+        this.setState({btnLoader: false})
+      }
       return;
     });
   }
@@ -43,7 +49,9 @@ class AuthForm extends Component{
         <div className="background-form" />
         <div className="col-md-6 col-lg-4">
           <form onSubmit={this.handleSubmit}>
-            <h2 style={{margin:"2rem 0"}} className="text-center">{heading}</h2>
+            <h2 style={{ margin: "2rem 0" }} className="text-center">
+              {heading}
+            </h2>
             {err.message && (
               <div className="alert alert-danger">{err.message}</div>
             )}
@@ -89,11 +97,29 @@ class AuthForm extends Component{
               </div>
             )}
             <button
-              style={{ width: "100%" }}
+              style={{
+                width: "100%",
+                backgroundColor: this.state.btnLoader
+                  ? "rgba(42,87,235,.4)"
+                  : "rgb(42,87,235)"
+              }}
               type="submit"
               className="btn btn-primary"
             >
               {buttonText}
+              {this.state.btnLoader && (
+                <Spinner
+                  style={{
+                    width: "1.5rem",
+                    height: "1.5rem",
+                    borderWidth: "inherit",
+                    position: "absolute",
+                    right: "32px"
+                  }}
+                  size="sm"
+                  color="light"
+                />
+              )}
             </button>
           </form>
         </div>
