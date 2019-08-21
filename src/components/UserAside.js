@@ -66,8 +66,16 @@ class UserAside extends Component {
             !loading
           )) ? (
             isAuthenticated ? (
-              <div className={"card " + ((_id === this.userDetails._id ||
-                    this.userDetails._id === undefined) && !showProfile ? "hide-card":"show-card")}>
+              <div
+                className={
+                  "card " +
+                  ((_id === this.userDetails._id ||
+                    this.userDetails._id === undefined) &&
+                  !showProfile
+                    ? "hide-card"
+                    : "show-card")
+                }
+              >
                 <div className="view">
                   <img
                     src={
@@ -104,6 +112,7 @@ class UserAside extends Component {
                     id="fileInput"
                     type="file"
                     onChange={this.handleFileUpload}
+                    accept="image/png, image/jpeg"
                   />
                 </div>
                 <div className="card-body">
